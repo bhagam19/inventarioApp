@@ -18,16 +18,12 @@ function aplicarFiltros(q,f,v){
 	document.getElementById("contenedorTablaBienes").innerHTML=xmlhttp.responseText.trim();	
 }
 function actualizarSeleccionBien(tdId,numReg,campo1,selId,value,tabla,campo2,q,c){
-	//alert(tdId+", "+numReg+", "+campo1+", "+selId+", "+value+", "+tabla+", "+campo2+", "+q);
-	
-	cancelarAccionBien(q);
-	
+	//alert(tdId+", "+numReg+", "+campo1+", "+selId+", "+value+", "+tabla+", "+campo2+", "+q);	
+	cancelarAccionBien(q);	
 	var td=document.getElementById(tdId);
 	var texto="";
-
 	inicio=td.innerHTML.indexOf(">");
 	texto=td.innerHTML.substring(inicio+1,td.innerHTML.length);
-
 	/*
 	img1=td.innerHTML.substring(0,4);
 	img2='<img';	
@@ -55,13 +51,10 @@ function actualizarSeleccionBien(tdId,numReg,campo1,selId,value,tabla,campo2,q,c
 	}
 	*/
 	//alert(texto);
-
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","../bdBienes/02-cargarListasBienes.php?actual="+texto+"&tabla="+tabla+"&campo1="+campo1+"&campo2="+campo2,false);
 	xmlhttp.send();
-
-	// alert(xmlhttp.responseText.trim());
-	
+	// alert(xmlhttp.responseText.trim());	
 	var contenido =	'<select name="'+selId+'" id="'+selId+'" style="width:'+c+'; height:19px;color:gray;font-weight:bold;font-size:9px;font-family:‘Lucida Console’, Monaco, monospace;"><option value='+value+'>'+texto+'</option>'+
 					xmlhttp.responseText.trim() + '</select>'+" " +
 					'<input type="image" style="width:10px; height:10px;position:relative;top:5px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+selId+'.value,\''+campo1+'\',\''+q+'\')">'+" "+
@@ -74,6 +67,101 @@ function actualizarSeleccionBien(tdId,numReg,campo1,selId,value,tabla,campo2,q,c
 	if(obj.value!==""){
 		obj.value+="";	
 	}
+}
+function hacerFetchJson(url, data, flag){
+    var request = new Request(
+        url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+    //fetch().then({}).then({}).catch();
+    fetch(request)
+    .then(texto => {
+        return texto.text();
+    }).then(textoInText=> {                       
+            if (flag == 1){
+            document.getElementById("contenedorTablaBienes").innerHTML=""
+            document.getElementById("contenedorTablaBienes").innerHTML=textoInText.trim();
+            }
+        }
+    ).catch(
+        function(error) {
+            console.log('Hubo un problema con la petición Fetch:' + error.message);
+        }
+    );       
+}
+function cargarActualizableJson(tbl, campos, campo, direccion){
+    url = 'adm/03-cnt/03-funciones/cargarTabla2.php';
+            data = {
+                tbl: tbl,
+                campos: campos,
+                campo: campo,
+                direccion: direccion
+            };
+            flag=1;
+            hacerFetchJson(url, data, flag);
+}
+function cancelarAccionBienJson(q){
+	alert(q);
+	url = '../bdBienes/01.00-cargarArchivos.php';
+            data = {
+                q:q
+            };
+            flag=1;
+	hacerFetchJson(url, data, flag);
+}
+function actualizarSeleccionBienJson(tdId,numReg,campo1,selId,value,tabla,campo2,q,c){
+	//alert(tdId+", "+numReg+", "+campo1+", "+selId+", "+value+", "+tabla+", "+campo2+", "+q);	
+	//cancelarAccionBienJson(q);	
+	var td=document.getElementById(tdId);
+	var texto="";
+	inicio=td.innerHTML.indexOf(">");
+	texto=td.innerHTML.substring(inicio+1,td.innerHTML.length);	
+	//alert(texto);
+	url = '../bdBienes/02-cargarListasBienes.php';
+	data = {
+		actual:texto,
+		tabla:tabla,
+		campo1:campo1,
+		campo2:campo2
+	};            
+	var request = new Request(
+        url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+    fetch(request)
+    .then(texto => {
+        return texto.text();
+    }).then(textoInText=> { 
+		//alert(textoInText.trim());
+		var contenido =	
+			'<select name="'+selId+'" id="'+selId+'" style="width:'+c+'; height:19px;color:gray;font-weight:bold;font-size:9px;font-family:‘Lucida Console’,'+
+			'Monaco, monospace;"><option value='+value+'>'+texto+'</option>'+textoInText.trim()+'</select>'+" "+'<input type="image" style="width:10px;'+
+			'height:10px;position:relative;top:5px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+selId+'.value,\''+campo1+'\',\''+q+'\')">'+" "+
+    		'<input type="image" style="width:10px; height:10px;position:relative;top:5px" src="../art/cancelar.svg" onclick="cancelarAccionBien(\''+q+'\')">';
+		//alert(contenido);
+		td.innerHTML=contenido;
+		td.onclick="";
+		var obj =document.getElementById(selId);
+		obj.focus();
+		if(obj.value!==""){
+			obj.value+="";	
+		}		
+    }
+    ).catch(
+        function(error) {
+            console.log('Hubo un problema con la petición Fetch:' + error.message);
+        }
+    );		
 }
 function actualizarInputBien(tdId,numReg,campo,inpId,q,px,event){
 	
@@ -144,33 +232,24 @@ function confirmarAccion(tipo,id,valor,campo,q){
 }
 function actualizarRegistroBien(id,valor,campo,q){
 	// alert(id+", "+valor+", "+campo+", "+q);
-	valor=ucwords(valor.toLowerCase());
-  
+	valor=ucwords(valor.toLowerCase());  
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", "../bdBienes/04-actualizarBien.php"+q+"&id="+id+"&valor="+valor+"&campo="+campo, false);
 	xmlhttp.send();
-
 	// alert(xmlhttp.responseText.trim());
-
 	var n = q.search("uP");
 	n = parseInt(q.substring(n+3,n+4));
-
 	if(n===6){
-
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET", "../bdBienes/consultarPorModificaciones.php", false);
 		xmlhttp.send();
-
 		//alert(xmlhttp.responseText.trim());
-
 		var rows = xmlhttp.responseText.trim();
-
 		if(rows>=1){
 			q = q + "&cMod=1";
 		}
 	//alert(q);
 	}	
-	
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","../bdBienes/01.00-cargarArchivos.php"+q,false);
 	xmlhttp.send();
@@ -279,6 +358,7 @@ function agregarBien(qry,id,nomBien,cEspecial,cTamano,material,color,marca,otra,
 	    $('#formEditBienes').css('left', "50px");	    
 	  }		
 }
+
 function cancelarAccionBien(q){
 	// alert(q);
 	var xmlhttp = new XMLHttpRequest();

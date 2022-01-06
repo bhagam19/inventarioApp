@@ -1,4 +1,15 @@
 <?php
+	function isValidJSON($str) {
+		json_decode($str);
+		return json_last_error() == JSON_ERROR_NONE;
+	}	
+	$json_params = file_get_contents("php://input");	
+	if (strlen($json_params) > 0 && isValidJSON($json_params)){
+		$decoded_params = json_decode($json_params);
+		$q = $decoded_params->q;	
+	}
+
+
 	if(!isset($_SESSION['usuario'])){
 		if(@$_GET['u']){
 			@session_start();			
