@@ -1,5 +1,4 @@
-<?php
-	
+<?php	
 	$salida.= 
 				'	
 					<tr class="filaFiltros stickyHead2">		
@@ -13,7 +12,7 @@
 								<select style="background:#BDCEFB;color:#4163B8;';
 							}
 							$salida.='
-								font-size:9px; width:90px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f1\',this.value)">';
+								width:90px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f1\',this.value)">';
 							if($f1){
 								$salida.= '<option>'.$f1.'</option>';
 								$salida.= '<option value="por Bien..." style="background:white">Quitar filtro</option>';
@@ -55,7 +54,7 @@
 								<select style="background:#BDCEFB;color:#4163B8;';
 							}
 							$salida.='
-								font-size:9px; width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f2\',this.value)">';
+								width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f2\',this.value)">';
 								if($f2){
 									$salida.= '<option>'.$f2.'</option>';
 									$salida.= '<option value="por Detalle..." style="background:white">Quitar filtro</option>';
@@ -99,7 +98,7 @@
 								<select style="background:#BDCEFB;color:#4163B8;';
 							}
 							$salida.='
-								font-size:9px; width:96px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f9\',this.value)">';							
+								width:96px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f9\',this.value)">';							
 								if($f9){
 									//Cambio el "codEstado" por el "nomEstado"
 									$consulta=mysqli_query($conexion,"SELECT * FROM estadoDelBien WHERE codEstado=".$f9);
@@ -129,27 +128,20 @@
 									while($estado=mysqli_fetch_assoc($consulta2)){
 									$estados[$estado["codEstado"]] = $estado["nomEstado"];
 									}
-								}								
-									    
+								}	    
 								$e2=array_unique($estados);
 								foreach($e2 as $idd =>$e){ 
 										if($idd!=$f9){
 											$salida.='<option value="'.$idd.'">'.$e.'</option>';
 										}
 									}
-
 								/*$tf4=(microtime(true)-$ti);
 								echo '<br>filtro Dependencia: '.number_format($tf4,5).'<br>';
 								$ti=microtime(true);*/
-
 								// mysqli_free_result($consulta);
-
 						$salida.= '		
-							</select></th>				
-												
-						
+							</select></th>
 						<td class="encabezadoTabla">';
-
 							if($f3==""||$f3=="por Tipo Inventario..."){
 								$salida.='
 								<select style="';
@@ -159,7 +151,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f3\',this.value)">';
+								width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f3\',this.value)">';
 																
 								if($f3){
 									//Cambio el "codClase" por el "nomClase"
@@ -183,15 +175,13 @@
 										$consulta=mysqli_query($conexion,"SELECT DISTINCT codCategoria FROM bienes ".$cr." ORDER BY codCategoria ASC");
 									}
 								}
-
 								$clases=array();										
 								while($fila1=mysqli_fetch_array($consulta)){
 									$consulta2=mysqli_query($conexion,"SELECT * FROM clasesDeBienes WHERE codClase=".$fila1["codCategoria"]);
 									while($clase=mysqli_fetch_assoc($consulta2)){
 									$clases[$clase["codClase"]] = $clase["nomClase"];
 									}
-								}								
-									    
+								}	    
 								$c2=array_unique($clases);
 								asort($c2);
 								foreach($c2 as $idd =>$c){ 
@@ -217,7 +207,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f4\',this.value)">';
+								width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f4\',this.value)">';
 							
 								if($f4){
 									//Cambio el "codDependencias" por el "nomDependencias"
@@ -247,8 +237,7 @@
 									while($dependencia=mysqli_fetch_assoc($consulta2)){
 									$dependencias[$dependencia["codDependencias"]] = $dependencia["nomDependencias"];
 									}
-								}								
-									    
+								}
 								$d2=array_unique($dependencias);
 								foreach($d2 as $idd =>$d){ 
 										if($idd!=$f4){
@@ -264,13 +253,9 @@
 
 						$salida.= '		
 							</select></td>';
-
-
 						if(!isset($_SESSION['usuario'])){
-							$salida.= 
-								'								
+							$salida.='								
 									<td class="encabezadoTabla">';
-
 									if($f5==""||$f5=="por Responsable..."){
 										$salida.='
 										<select style="';
@@ -278,10 +263,8 @@
 										$salida.='
 										<select style="background:#BDCEFB;color:#4163B8;';
 									}
-
 							$salida.='
-								font-size:9px; width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f5\',this.value)">';
-							
+								width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f5\',this.value)">';
 									if($f5){
 										//Cambio el "usuarioID" por Nombres y apellidos
 										$consulta=mysqli_query($conexion,"SELECT * FROM usuarios WHERE usuarioID=".$f5);
@@ -292,8 +275,7 @@
 										$salida.= '<option value="por Responsable..." style="background:white">Quitar filtro</option>';
 									}else{
 										$salida.= '<option>por Responsable...</option>';
-									}
-								
+									}								
 									if(!isset($_SESSION['usuario'])){			
 										$consulta=mysqli_query($conexion,"SELECT DISTINCT usuarioID FROM bienes ".$cr." ORDER BY usuarioID ASC");	
 									}else{
@@ -303,34 +285,30 @@
 										}else{										
 											$consulta=mysqli_query($conexion,"SELECT DISTINCT usuarioID FROM bienes ".$cr." ORDER BY usuarioID ASC");
 										}
-									}
-									
+									}									
 									$usuarios=array();										
 									while($fila1=mysqli_fetch_array($consulta)){
 										$consulta2=mysqli_query($conexion,"SELECT usuarioID,nombres,apellidos FROM usuarios WHERE usuarioID=".$fila1["usuarioID"]." ORDER BY apellidos ASC");
 										while($usuario=mysqli_fetch_assoc($consulta2)){
 										$usuarios[$usuario["usuarioID"]] = $usuario["nombres"].' '.$usuario["apellidos"];
 										}
-									}								
-									    
+									}
+									asort($usuarios);
 									$u2=array_unique($usuarios);
+									
 									foreach($u2 as $idd =>$u){ 
 										if($idd!=$f5){
 											$salida.='<option value="'.$idd.'">'.$u.'</option>';
 										}
 									}
-
 							$salida.= '		
 								</select></td>
 								';						
 						}else{
 							$codigo=$_SESSION['permiso'];
 							if($codigo==6){
-
-								$salida.= 
-									'								
+								$salida.= '								
 										<td class="encabezadoTabla">';
-
 										if($f5==""||$f5=="por Responsable..."){
 											$salida.='
 											<select style="';
@@ -338,10 +316,8 @@
 											$salida.='
 											<select style="background:#BDCEFB;color:#4163B8;';
 										}
-
 								$salida.='
-									font-size:9px; width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f5\',this.value)">';
-								
+									width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f5\',this.value)">';								
 										if($f5){
 											//Cambio el "usuarioID" por Nombres y apellidos
 											$consulta=mysqli_query($conexion,"SELECT * FROM usuarios WHERE usuarioID=".$f5);
@@ -352,8 +328,7 @@
 											$salida.= '<option value="por Responsable..." style="background:white">Quitar filtro</option>';
 										}else{
 											$salida.= '<option>por Responsable...</option>';
-										}
-									
+										}								
 										if(!isset($_SESSION['usuario'])){			
 											$consulta=mysqli_query($conexion,"SELECT DISTINCT usuarioID FROM bienes ".$cr." ORDER BY usuarioID ASC");	
 										}else{
@@ -363,27 +338,25 @@
 											}else{										
 												$consulta=mysqli_query($conexion,"SELECT DISTINCT usuarioID FROM bienes ".$cr." ORDER BY usuarioID ASC");
 											}
-										}
-										
+										}										
 										$usuarios=array();										
 										while($fila1=mysqli_fetch_array($consulta)){
-											$consulta2=mysqli_query($conexion,"SELECT usuarioID,nombres,apellidos FROM usuarios WHERE usuarioID=".$fila1["usuarioID"]." ORDER BY apellidos ASC");
+											$consulta2=mysqli_query($conexion,"SELECT usuarioID,nombres,apellidos FROM usuarios WHERE usuarioID=".$fila1["usuarioID"]." ORDER BY nombres ASC");
 											while($usuario=mysqli_fetch_assoc($consulta2)){
 											$usuarios[$usuario["usuarioID"]] = $usuario["nombres"].' '.$usuario["apellidos"];
 											}
-										}								
-										    
+										}
+										asort($usuarios);
 										$u2=array_unique($usuarios);
 										foreach($u2 as $idd =>$u){ 
 											if($idd!=$f5){
 												$salida.='<option value="'.$idd.'">'.$u.'</option>';
 											}
 										}
-
 								$salida.= '		
 									</select></td>
 									<td class="encabezadoTabla"></td>
-									';																						
+								';																						
 							}		
 						}
 					$salida.=
@@ -400,7 +373,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:100px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f6\',this.value)">';
+								width:100px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f6\',this.value)">';
 
 							if($f6){
 								$salida.= '<option>'.$f6.'</option>';
@@ -448,7 +421,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:100px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f7\',this.value)">';
+								width:100px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f7\',this.value)">';
 
 							if($f7){
 								$salida.= '<option>'.$f7.'</option>';
@@ -496,7 +469,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:100px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f8\',this.value)">';
+								width:100px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f8\',this.value)">';
 
 							if($f8){
 								$salida.= '<option>'.$f8.'</option>';
@@ -546,7 +519,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:135px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f10\',this.value)">';
+								width:135px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f10\',this.value)">';
 							
 								if($f10){
 									//Cambio el "codAlmacenamiento" por el "nomAlmacenamiento"
@@ -604,7 +577,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:135px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f11\',this.value)">';
+								width:135px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f11\',this.value)">';
 							
 								if($f11){
 									//Cambio el "codMantenimiento" por el "nomMantenimiento"
@@ -661,7 +634,7 @@
 							}
 
 							$salida.='
-								font-size:9px; width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f12\',this.value)">';
+								width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f12\',this.value)">';
 
 							if($f12){
 								$salida.= '<option>'.$f12.'</option>';

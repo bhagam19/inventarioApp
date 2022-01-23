@@ -112,19 +112,16 @@ function mostrarSubMenu(){
 	}
 }
 $(document).ready(function(){
-
 	$(window).resize(function(){
 		if ($(document).width() > 450){
 			$('.menuNavegacion .menu').css({'display' : 'block'});
 		}
-
 		if ($(document).width() < 450){
 			$('.menuNavegacion .menu').css({'display' : 'none'});
 			$('.menu li ul').slideUp();
 			$('.menu li').removeClass('activado');
 		}
-	});
-	
+	});	
 });
 function mostrarFormularios(clase){ //mostrar formularios	
 	$('#separador').fadeIn('fast',function(){
@@ -139,15 +136,12 @@ $(document).ready(function(){ //ocultar formularios
 		});
 	});
 });//ocultar formularios
-
 $(document).ready(function() {//mover formularios
 	$("#formulario").draggable({stack:"#formulario"}, {handle:"#handler"});
 });//mover formularios
-
 $(document).ready(function() {//mover formulario Mis Reservaciones
 	$("#formulario").draggable({stack:"#formulario"}, {handle:"#handler"});
 });//mover formulario Mis Reservaciones
-
 function registrarUsuario(id){ //id=1 representa que no hay formulario que ocultar. (e.g. formularioNuevoUsuario.php)
 	var usuario= document.getElementById("usuario").value;
 	var contrasena= document.getElementById("contrasena").value;
@@ -204,7 +198,6 @@ function registrarUsuario(id){ //id=1 representa que no hay formulario que ocult
 	}
 	
 } //id=1 representa que no hay formulario que ocultar. (e.g. formularioNuevoUsuario.php)
-
 function validarLogin(usuario,contrasena){
 	var xmlhttp = new XMLHttpRequest();        
         xmlhttp.open("GET", "../login/01-login.php?usuario="+usuario+"&contrasena="+contrasena, false);
@@ -223,7 +216,6 @@ function validarLogin(usuario,contrasena){
         	return false;
         }
 }
-
 function validarNuevaContrasena(actual,nueva,confirmacion){
 	if(actual===""){
 		alert("Por favor, ingrese la contraseña actual para poder continuar.");
@@ -254,7 +246,6 @@ function validarNuevaContrasena(actual,nueva,confirmacion){
 		}
 	}		
 }
-
 function mostrarFormCargueExcel(){
   if( $('#formCargueExcel').css('visibility') !== 'hidden') {
 	    $('#formCargueExcel').css('visibility', 'hidden');	    
@@ -262,11 +253,8 @@ function mostrarFormCargueExcel(){
 	    $('#formCargueExcel').css('visibility', 'visible');	    
 	  }  
 }
-
 function reinstalarBD(){
-
 	var confirmar=confirm("¿Realmente desea reinstalar la Base de Datos?\n\nEsta acción no se puede deshacer.");
-
 	if(confirmar){		
 		window.open("/inventarioIET/03-borrarTablas.php");
 		// var xmlhttp = new XMLHttpRequest();
@@ -278,4 +266,3 @@ function reinstalarBD(){
 	}
 
 }
-

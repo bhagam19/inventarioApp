@@ -26,8 +26,11 @@ if($mod[7]==1){ //Aquí se alerta una modificación.
 	$salida.= 
 	'	<td id="tdCant'.$fila1["codBien"].'" class="sticky6" style="background:#D2F6B3; border: 2px solid gray;text-align:right;padding:0px 10px"  title="Valor original: '.$fila1["cantBien"].'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador." ondblclick="actualizarInputBien(this.id,'.$fila1["codBien"].',\'cantBien\',\'cantAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'35px\',event)"><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/> '.$vlr[7].'</td>';
 }else{
-	$salida.= 
-	'	<td id="tdCant'.$fila1["codBien"].'" class="sticky6" style="text-align:left;padding:0px 20px" ><img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'cantBien\',\'cantAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'35px\',event)">'.$fila1["cantBien"].'</td>';
+	$salida.='
+		<td id="tdCant'.$fila1["codBien"].'" class="sticky6" style="text-align:left;padding:0px 20px" >
+			<img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'cantBien\',\'cantAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'35px\',event)">'.$fila1["cantBien"].'
+		</td>
+	';
 }
 //========================ESTADO (SELECT)======================
 	//Se verifica si hay modificaciones pendientes.
@@ -127,8 +130,11 @@ $salida.=
 		$salida.= 
 		'	<td id="tdOrigen'.$fila1["codBien"].'" style="background:#D2F6B3; border: 2px solid gray"  title="Valor original: '.$fila1["origenDelBien"].'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador." ondblclick="actualizarInputBien(this.id,'.$fila1["codBien"].',\'origenDelBien\',\'origenAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'80px\',event)"><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/> '.$vlr[4].'</td>';
 	}else{
-		$salida.= 
-		'	<td id="tdOrigen'.$fila1["codBien"].'"><img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'origenDelBien\',\'origenAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'80px\',event)">'.$fila1["origenDelBien"].'</td>';
+		$salida.='
+			<td id="tdOrigen'.$fila1["codBien"].'">
+				<img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'origenDelBien\',\'origenAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'80px\',event)">'.$fila1["origenDelBien"].'
+			</td>
+		';
 	}
 
 //========================FECHAS======================

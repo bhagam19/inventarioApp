@@ -31,46 +31,37 @@
 	$sql01=mysqli_query($conexion,"SELECT * FROM detallesDeBienes WHERE codBien=".$id);    
     $row1 = mysqli_num_rows($sql01); //Verificamos cuántas filas cumplen con la consulta "$sql"
 	if($row1==0){			
-		mysqli_query($conexion,"INSERT INTO detallesDeBienes (codBien, carEspecial, tamano, material, color, marca, otra) VALUES (".$id.",'".$vlr1."','".$vlr2."','".$vlr3."','".$vlr4."','".$vlr5."','".$vlr6."')");
+		mysqli_query($conexion,"INSERT INTO detallesDeBienes (codBien, carEsp, tamano, material, color, marca, otra) VALUES (".$id.",'".$vlr1."','".$vlr2."','".$vlr3."','".$vlr4."','".$vlr5."','".$vlr6."')");
 	}else{
-		mysqli_query($conexion,"UPDATE detallesDeBienes SET carEspecial ='".$vlr1."', tamano ='".$vlr2."', material ='".$vlr3."', color ='".$vlr4."', marca ='".$vlr5."', otra ='".$vlr6."' WHERE codBien=".$id);
+		mysqli_query($conexion,"UPDATE detallesDeBienes SET carEsp ='".$vlr1."', tamano ='".$vlr2."',  material ='".$vlr3."', color ='".$vlr4."', marca ='".$vlr5."', otra ='".$vlr6."' WHERE codBien=".$id);
 	}
 	$sql01=mysqli_query($conexion,"SELECT * FROM modificacionesBienes WHERE codBien=".$id);    
     $row2 = mysqli_num_rows($sql01); //Verificamos cuántas filas cumplen con la consulta "$sql"
-    $valor=$vlr1."; ".$vlr2."; ".$vlr3."; ".$vlr4."; ".$vlr5."; ".$vlr6;
-
+    $valor=$vlr1."; ".$vlr2."; ".$vlr3."; ".$vlr4."; ".$vlr5."; ".$vlr6; 
 	if($row2==0){
 		mysqli_query($conexion,"INSERT INTO modificacionesBienes (codBien, detalleDelBien) VALUES (".$id.",'".$valor."')");
 	}else{
 		mysqli_query($conexion,"UPDATE modificacionesBienes SET detalleDelBien ='".$valor."' WHERE codBien=".$id);
 	}
-
 	$cnt=0;
-
 	foreach($columnas as $columna){
-
 		$sql01=mysqli_query($conexion,"SELECT ".$columna." FROM modificacionesBienes WHERE codBien=".$id);
 		while($f01=mysqli_fetch_array($sql01)){
 			$vl01=$f01[$columna];			
 		}
-
 		$sql02=mysqli_query($conexion,"SELECT ".$columna." FROM bienes WHERE codBien=".$id);
 		while($f02=mysqli_fetch_array($sql02)){
 			$vl02=$f02[$columna];
-		}
-		
+		}		
 		if($vl01==Null){
 			$cnt++;
 		}else if($vl01==$vl02){
 			$cnt++;
 		}
 	}
-
 	if($cnt==14){
 		mysqli_query($conexion,"DELETE FROM modificacionesBienes WHERE codBien=".$id);
 	}	
-
 	echo $row1;
-
 	mysqli_close($conexion);
 ?>

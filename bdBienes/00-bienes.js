@@ -55,7 +55,7 @@ function actualizarSeleccionBien(tdId,numReg,campo1,selId,value,tabla,campo2,q,c
 	xmlhttp.open("GET","../bdBienes/02-cargarListasBienes.php?actual="+texto+"&tabla="+tabla+"&campo1="+campo1+"&campo2="+campo2,false);
 	xmlhttp.send();
 	// alert(xmlhttp.responseText.trim());	
-	var contenido =	'<select name="'+selId+'" id="'+selId+'" style="width:'+c+'; height:19px;color:gray;font-weight:bold;font-size:9px;font-family:‘Lucida Console’, Monaco, monospace;"><option value='+value+'>'+texto+'</option>'+
+	var contenido =	'<select name="'+selId+'" id="'+selId+'" style="width:'+c+'; height:19px;color:gray;font-weight:bold;font-family:‘Lucida Console’, Monaco, monospace;"><option value='+value+'>'+texto+'</option>'+
 					xmlhttp.responseText.trim() + '</select>'+" " +
 					'<input type="image" style="width:10px; height:10px;position:relative;top:5px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+selId+'.value,\''+campo1+'\',\''+q+'\')">'+" "+
     			'<input type="image" style="width:10px; height:10px;position:relative;top:5px" src="../art/cancelar.svg" onclick="cancelarAccionBien(\''+q+'\')">';
@@ -163,18 +163,15 @@ function actualizarSeleccionBienJson(tdId,numReg,campo1,selId,value,tabla,campo2
         }
     );		
 }
-function actualizarInputBien(tdId,numReg,campo,inpId,q,px,event){
-	
+function actualizarInputBien(tdId,numReg,campo,inpId,q,px,event){	
 	//alert(tdId+", "+numReg+", "+campo+", "+inpId+", "+q);
 	cancelarAccionBien(q);
-
 	var td=document.getElementById(tdId);	
 	var y = event.clientY;
-	var texto="";
-	
+	var texto="";	
 	inicio=td.innerHTML.indexOf(">");
-	texto=td.innerHTML.substring(inicio+1,td.innerHTML.length);
-	
+	texto=td.innerHTML.substring(inicio+1,td.innerHTML.length);	
+	texto=texto.trim();
 	/*	
 	img1=td.innerHTML.substring(0,4);
 	img2='<img';
@@ -185,23 +182,21 @@ function actualizarInputBien(tdId,numReg,campo,inpId,q,px,event){
 	}else{
 		texto=td.innerHTML;
 	}	
-	*/
-	
-	
+	*/	
 	if(campo==='precio'){
 		texto=(texto.substring(1,texto.length-3)).replace(/,/g,""); // Se toma el valor actual y se le quita el signo pesos.
 	}
 	var contenido="";
 	if(campo==='observaciones'){
-		contenido =	'<textarea id="'+inpId+'" value="'+texto+'" style="width:'+px+'; height:12px;color:#2D3D9F;font-weight:normal;font-size:10px;" onkeyup="sugerirObservaciones2(this.value,this.id,'+y+')">'+texto+'</textarea>'+" "+
+		contenido =	'<textarea id="'+inpId+'" value="'+texto+'" style="width:'+px+'; height:12px;color:#2D3D9F;font-weight:normal" onkeyup="sugerirObservaciones2(this.value,this.id,'+y+')">'+texto+'</textarea>'+" "+
 		   			'<input type="image" style="width:10px; height:10px;position:relative;top:0px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+inpId+'.value,\''+campo+'\',\''+q+'\')">'+" "+
     				'<input type="image" style="width:10px; height:10px;position:relative;top:0px" src="../art/cancelar.svg" onclick="cancelarAccionBien(\''+q+'\')">';
 	}else if(campo==='fechaAdquisicion'){
-		contenido =	'<input type="date" id="'+inpId+'" value="'+texto+'" style="width:100px; height:10px;color:#2D3D9F;font-weight:normal;font-size:10px">'+" "+
+		contenido =	'<input type="date" id="'+inpId+'" value="'+texto+'" style="width:100px; height:10px;color:#2D3D9F;font-weight:normal;">'+" "+
 		   			'<input type="image" style="width:10px; height:10px;position:relative;top:4px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+inpId+'.value,\''+campo+'\',\''+q+'\')">'+" "+
     				'<input type="image" style="width:10px; height:10px;position:relative;top:4px" src="../art/cancelar.svg" onclick="cancelarAccionBien(\''+q+'\')">';
   }else{
-		contenido =	'<input type="text" id="'+inpId+'" value="'+texto+'" style="width:'+px+'; height:10px;color:#2D3D9F;font-weight:normal;font-size:10px;">'+" "+
+		contenido =	'<input type="text" id="'+inpId+'" value="'+texto+'" style="width:'+px+'; height:10px;color:#2D3D9F;font-weight:normal;">'+" "+
 		   			'<input type="image" style="width:10px; height:10px;position:relative;top:4px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+inpId+'.value,\''+campo+'\',\''+q+'\')">'+" "+
     				'<input type="image" style="width:10px; height:10px;position:relative;top:4px" src="../art/cancelar.svg" onclick="cancelarAccionBien(\''+q+'\')">';
   }
@@ -358,7 +353,6 @@ function agregarBien(qry,id,nomBien,cEspecial,cTamano,material,color,marca,otra,
 	    $('#formEditBienes').css('left', "50px");	    
 	  }		
 }
-
 function cancelarAccionBien(q){
 	// alert(q);
 	var xmlhttp = new XMLHttpRequest();
@@ -398,18 +392,20 @@ function registrarAlmacenamiento(){
         }    
 	}		
 }
-function eliminarRegistroAlmacen(id){
-	//alert(id);
-	
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET","../bdAlmacenamiento/05-eliminarAlmacenamiento.php?codAlmacenamiento="+id,false);
-	xmlhttp.send();
-		
-
-	xmlhttp.open("GET","../bdAlmacenamiento/02-cargarOpcionesAlmacenamiento.php",false);
-	xmlhttp.send();
-	document.getElementById("actualizable").innerHTML="";
-	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();
+function eliminarBien(id,q){
+	var confirmar=confirm("¿Realmente desea elimar el registro no. "+id+"?\n\nEsta acción no se puede deshacer.");
+	if(confirmar){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET","../bdBienes/05-eliminarBien.php?codBien="+id,false);
+		xmlhttp.send();
+		xmlhttp.open("GET","../bdBienes/01.00-cargarArchivos.php"+q,false);
+		xmlhttp.send();
+		document.getElementById("contenedorTablaBienes").innerHTML="";
+		document.getElementById("contenedorTablaBienes").innerHTML=xmlhttp.responseText.trim();
+		alert("El registro "+id+ " se eliminó exitosamente.");
+	}else{
+		alert("No se eliminó ningún registro.");
+	}
 }
 function sugerirBienes(input){
 	var key = input;
@@ -538,9 +534,8 @@ function buscarDatos(consulta,u,uID,uP){
 	})	
 }
 function buscarBienes(busqueda,u,uID,uP,boton){
-	// alert(busqueda);
-	if(event.keyCode==13||boton==1){
-		
+	//alert(busqueda+", "+u+", "+uID+", "+uP+", "+boton);
+	if(event.keyCode==13||boton==1){		
 		if(busqueda!=" "){
 			buscarDatos(busqueda,u,uID,uP);
 		}else{
@@ -588,7 +583,7 @@ function mostrarEdicionDetalles(event,dCB,dNB,dDB,q){
 	  }	 
 }
 function ucwords(f){
-    return f.replace(/^([a-z\u00E0-\u00FC])|[\s()-]+([a-z\u00E0-\u00FC])/g, function($1){
+	return f.replace(/^([a-z\u00E0-\u00FC])|[\s()-]+([a-z\u00E0-\u00FC])/g, function($1){
        return $1.toUpperCase(); 
     });
 }
@@ -602,7 +597,7 @@ function actualizarRegistroDetBien(q){
 	var vlr4=ucwords(document.getElementById("color").value);
 	var vlr5=ucwords(document.getElementById("marca").value);
 	var vlr6=ucwords(document.getElementById("otra").value);
-	// alert(id+"; "+vlr1+"; "+vlr2+"; "+vlr3+"; "+vlr4+"; "+vlr5+"; "+vlr6+"; "+q);
+	//alert(id+"; "+vlr1+"; "+vlr2+"; "+vlr3+"; "+vlr4+"; "+vlr5+"; "+vlr6+"; "+q);
 	//valor=valor.toUpperCase();
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", "../bdBienes/04.02-actualizarDetBien.php?id="+id+"&vlr1="+vlr1+"&vlr2="+vlr2+"&vlr3="+vlr3+"&vlr4="+vlr4+"&vlr5="+vlr5+"&vlr6="+vlr6, false);

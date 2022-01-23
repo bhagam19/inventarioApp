@@ -8,8 +8,6 @@
 		$decoded_params = json_decode($json_params);
 		$q = $decoded_params->q;	
 	}
-
-
 	if(!isset($_SESSION['usuario'])){
 		if(@$_GET['u']){
 			@session_start();			

@@ -27,7 +27,8 @@ if($tabla=="ubicaciones"){
 	$registros=array();
 	while($registro=mysqli_fetch_assoc($consulta)){
 		$resgistros[$registro["$campo2"]] = $registro["apellidos"]." ".$registro["nombres"];
-	}	    
+	}	   
+	asort($resgistros); 
 	foreach($resgistros as $idd =>$registro){ 
 		if($registro!==$actual){
 			$respuesta.='

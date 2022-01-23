@@ -362,18 +362,19 @@ a.cerrar{
 /*====CuerpoPrincipal====*/
 #contenedor{
 	position:fixed;
+	width:fit-content;
 	top:72px;
 	left:45px;
 	font-family: arial, serif;	
-	font-weight:normal;
-	background: white;
+	font-weight:normal;	
+	background: white;	
 	z-index: 1;
 }
 /*-- -- */
 #reestablecerBD{	
 	position:relative;
 	left:30px;
-	width:300px;
+	width:fit-content;
 	padding:0px 5px;	
 }
 #reestablecerBD input{	
@@ -505,9 +506,25 @@ a.cerrar{
 	background: white	;
 }
 /*====Tabla Principal====*/
-.baseDeDatos {
-	position: relative;	
+.tituloBD{
+	position: relative;
+	width:50%;
+	left:10px;
+	text-align: center	;
+	padding:10px 15px;
+	font-size: 20px;
+	font-weight: bolder;
+}
+.baseDeDatos{/*Solo para Bienes*/
+	position: relative;
 	height:650px;
+    overflow: scroll;
+}
+.baseDeDatos2{/*para las demás tablas*/
+	position: relative;
+	top:5px;
+	width: fit-content;
+	height:750px;
     overflow: scroll;
 }
 .tablaBD tbody tr:nth-child(even) {
@@ -525,12 +542,6 @@ a.cerrar{
 	border-left: 1px solid black;
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
-}
-.tituloBD{
-	position: relative;
-	left:10px;
-	font-size: 20px;
-	font-weight: bolder;
 }
 .tablaBD th img, .tablaBD td img{
 	height:10px;
@@ -590,6 +601,10 @@ table tbody th {
 	text-overflow: ellipsis;
 	overflow:hidden;
 }
+.filaNuevo{	
+	top:-10px;
+	background:#c2c5e4 !important;
+}
 .filaFiltros{
 	background:#7A7EA0 !important;
 }
@@ -602,7 +617,6 @@ select{
 	border:1px solid #4163B8;
 	border-radius:10px;
 	color:#4163B8;
-	font-size: 14px;
 }
 .tablaBD .regular{
 	background:#FDD15C !important;	
@@ -694,7 +708,7 @@ select{
 /*====Columnas fijas====*/
 .stickyHead1{
 	position:sticky;
-	top:-2px;
+	top:0px;
 	border-right:0.2px solid white;
 	border-bottom:0.2px solid lightgray;
 	z-index: 2;
@@ -702,6 +716,13 @@ select{
 .stickyHead2{
 	position:sticky;
 	top:32px;
+	border-right:0.2px solid white;
+	border-bottom:0.2px solid lightgray;
+	z-index: 2;
+}
+.filaNuevo{
+	position:sticky;
+	top:22px;
 	border-right:0.2px solid white;
 	border-bottom:0.2px solid lightgray;
 	z-index: 2;
@@ -843,11 +864,9 @@ select{
 	font-weight:bold;
 	background-color:#E0F2F7;
 }
-
 input, textarea, select{
   width: 100px;
   padding:2px 2px;
-  font-size: 10px;
   font-family:arial, serif;
   background:white;	
   border-radius: 5px;
@@ -860,15 +879,12 @@ textarea{
   resize: both;
 }
 input:focus, textarea:focus, select:focus{
-	font-size: 10px;
-	font-family:arial, serif;
 	background:white;
 	border-color: #2F900E;
     box-shadow: 0 1px 1px rgba(47, 144, 14, 0.075)inset, 0 0 8px rgba(96, 228, 51,0.6);
     outline: 0 none;
     border-radius: 1px;
 }
-
 #btnFormBienesEnviar{
 	font-size: 10px;
 	font-family:arial, serif;

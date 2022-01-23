@@ -6,7 +6,6 @@ function ordenarUsuario(campo,direccion){
 	document.getElementById("actualizable").innerHTML=""
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();	
 }
-
 function registrarNuevoUsuario(){
 	var usuario= document.getElementById("usuario").value;
 	var contrasena= document.getElementById("contrasena").value;
@@ -73,7 +72,6 @@ function registrarNuevoUsuario(){
 	}
 			
 }
-
 function actualizarSeleccionUsuario(tdId,numReg,campo,selId,value){
 	// alert(tdId+", "+numReg+", "+campo+", "+selId+", "+value);
 
@@ -140,7 +138,6 @@ function actualizarSeleccionUsuario(tdId,numReg,campo,selId,value){
 		obj.value+="";	
 	}			
 }
-
 function actualizarInputUsuario(tdId,numReg,campo,inpId){
 	// alert(tdId+", "+numReg+", "+campo+", "+inpId);
 	cancelarAccionUsuarios();
@@ -157,7 +154,6 @@ function actualizarInputUsuario(tdId,numReg,campo,inpId){
 		obj.value+="";
 	}	
 }
-
 function actualizarRegistroUsuario(id,valor,campo){
 	// alert(id+", "+valor+", "+campo);
 
@@ -171,7 +167,6 @@ function actualizarRegistroUsuario(id,valor,campo){
 	document.getElementById("actualizable").innerHTML=""
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();	
 }
-
 function cancelarAccionUsuarios(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","../bdUsuarios/02-cargarUsuarios.php",false);
@@ -179,7 +174,6 @@ function cancelarAccionUsuarios(){
 	document.getElementById("actualizable").innerHTML=""
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();
 }
-
 function eliminarRegistroUsuario(id){
 	//alert(id);
 	
@@ -193,7 +187,6 @@ function eliminarRegistroUsuario(id){
 	document.getElementById("actualizable").innerHTML=""
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();
 }
-
 function reestablecerTablaUsuarios(archivoFuente){
 
 	af=archivoFuente.replace(/\\/g, "/");

@@ -7,7 +7,6 @@ function ordenarClases(filtro){
 	document.getElementById("actualizable").innerHTML=""
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();	
 }
-
 function registrarClaseBien(){
 	var claseBien= document.getElementById("claseBien").value;
   
@@ -38,7 +37,6 @@ function registrarClaseBien(){
         }    
 	}		
 }
-
 function actualizarInputClase(tdId,numReg,campo,inpId){
 	//alert(tdId+", "+numReg+", "+campo+", "+inpId);
 	cancelarAccionClase();
@@ -55,7 +53,6 @@ function actualizarInputClase(tdId,numReg,campo,inpId){
 		obj.value+="";
 	}	
 }
-
 function actualizarRegistroClase(id,valor,campo){
 	//alert(id+", "+valor+", "+campo);  
 	valor=ucwords(valor.toLowerCase());
@@ -70,7 +67,6 @@ function actualizarRegistroClase(id,valor,campo){
 	document.getElementById("actualizable").innerHTML=""
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();	
 }
-
 function cancelarAccionClase(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","../bdClasesBienes/02-cargarClasesBienes.php",false);
@@ -78,7 +74,6 @@ function cancelarAccionClase(){
 	document.getElementById("actualizable").innerHTML=""
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();
 }
-
 function eliminarRegistroClase(id){
 	//alert(id);
 	

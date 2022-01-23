@@ -1,13 +1,11 @@
 function ordenarDependencias(filtro){
-	//alert(filtro);
-	
+	//alert(filtro);	
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","../bdDependencias/02-cargarDependencias.php?ordenarPor="+filtro,false);
 	xmlhttp.send();
 	document.getElementById("actualizable").innerHTML="";
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();	
 }
-
 function registrarDependencia(){
 	var dependencia= document.getElementById("dependencia").value;
 	var ubicacion= document.getElementById("ubicacion").value;
@@ -44,7 +42,6 @@ function registrarDependencia(){
         }    
 	}		
 }
-
 function actualizarSeleccionDependencia(tdId,numReg,campo,selId,value,tabla,campo2){
 	//alert(tdId+", "+numReg+", "+campo+", "+selId+", "+value+", "+tabla+", "+campo2);	
 	cancelarAccionDependencia();	
@@ -68,7 +65,6 @@ function actualizarSeleccionDependencia(tdId,numReg,campo,selId,value,tabla,camp
 	}
 				
 }
-
 function actualizarInputDependencia(tdId,numReg,campo,inpId){	
 	//alert(tdId+", "+numReg+", "+campo+", "+inpId);
 	cancelarAccionDependencia();
@@ -85,10 +81,9 @@ function actualizarInputDependencia(tdId,numReg,campo,inpId){
 		obj.value+="";
 	}	
 }
-
 function actualizarRegistroDependencia(id,valor,campo){
 	//alert(id+", "+valor+", "+campo);
-  valor=ucwords(valor.toLowerCase());
+  	valor=ucwords(valor.toLowerCase());
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", "../bdDependencias/04-actualizarDependencia.php?id="+id+"&valor="+valor+"&campo="+campo, false);
 	xmlhttp.send();
@@ -97,7 +92,6 @@ function actualizarRegistroDependencia(id,valor,campo){
 	document.getElementById("actualizable").innerHTML="";
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();
 }
-
 function cancelarAccionDependencia(){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","../bdDependencias/02-cargarDependencias.php",false);
@@ -105,7 +99,6 @@ function cancelarAccionDependencia(){
 	document.getElementById("actualizable").innerHTML="";
 	document.getElementById("actualizable").innerHTML=xmlhttp.responseText.trim();
 }
-
 function eliminarRegistroDependencia(id){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET","../bdDependencias/05-eliminarDependencia.php?codDependencia="+id,false);

@@ -1,49 +1,32 @@
 <?php
-
 	$paginaLogs="../bdClasesBienes/01-bdClasesBienes";//para escribir los Logs
 	$linkLogs="Clases";//para escribir los Logs
 	include('../bdLogs/01-bdEscribirLogs.php');
-
-	if(!isset($_SESSION['usuario'])){
-		
-		echo 
-			'
-				Lo siento. No tienes permisos suficientes.<br><br>
-				Si crees que deberías poder ingresar a esta opción, ponte en contacto con el administrador.
-				<br><br>
-			
-			';		
-
-	}else{
-		
+	if(!isset($_SESSION['usuario'])){		
+		echo'
+			Lo siento. No tienes permisos suficientes.<br><br>
+			Si crees que deberías poder ingresar a esta opción, ponte en contacto con el administrador.
+			<br><br>
+		';
+	}else{		
 		$codigo=$_SESSION['permiso'];
 		if($codigo==6){
-
-			echo 	
-			'
+			echo'
 				<div id="baseDeDatos">
-					<div class="baseDeDatos">
-						<div class="tituloBD">CLASES DE BIENES</div>
+				<div class="tituloBD">CLASES DE BIENES</div>
+					<div class="baseDeDatos2">						
 						<table class="tablaBD">
 							<thead>
-								<tr>
-									<td class="encabezadoTabla">COD</td>
-									<td class="encabezadoTabla" colspan="2">CLASES DE BIENES</td>
-								</tr>
-   								<tr>
-   									<td class="encabezadoTabla" style="text-align:center"><img src="../art/ordenarAZ.svg" title="Ordenar A-Z" onclick="ordenarClases(\'codClase\')"/></td>
-									<td class="encabezadoTabla" style="text-align:center" colspan="2"><img src="../art/ordenarAZ.svg" title="Ordenar A-Z" onclick="ordenarClases(\'nomClase\')"/></td>							
-								</tr>   								
+								<tr class="stickyHead1">
+									<th class="encabezadoTabla">COD <img src="../art/ordenarAZ.svg" title="Ordenar A-Z" onclick="ordenarClases(\'codClase\')"/></th>
+									<th class="encabezadoTabla" colspan="2">CLASES DE BIENES <img src="../art/ordenarAZ.svg" title="Ordenar A-Z" onclick="ordenarClases(\'nomClase\')"/></th>
+								</tr>  								
    							</thead>
-   							<tbody id="actualizable">
-   								
+   							<tbody id="actualizable">   								
    			';
-
 			include('02-cargarClasesBienes.php');
-
-			echo 
-
-			'				</tbody>	
+			echo '				
+							</tbody>	
 						</table>
 					</div>
 				</div>

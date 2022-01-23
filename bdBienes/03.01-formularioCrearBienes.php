@@ -81,11 +81,19 @@
 								<option value="">Seleccione...</option>
 							';
 									$usuarioID="";
+									$sql;
 									$sql=mysqli_query($conexion,"SELECT usuarioID FROM usuarios WHERE usuario=".$_SESSION['usuario']);
 									while($f=mysqli_fetch_array($sql)){
 										$usuarioID=$f['usuarioID'];
 									}
-									$sql=mysqli_query($conexion,"SELECT * FROM dependencias WHERE usuarioID=".$usuarioID);
+									if(isset($_SESSION['usuario'])){
+										$codigo=$_SESSION['permiso'];
+										if($codigo==6){
+											$sql=mysqli_query($conexion,"SELECT * FROM dependencias");																			
+										}else{
+											$sql=mysqli_query($conexion,"SELECT * FROM dependencias WHERE usuarioID=".$usuarioID);																		
+										}
+									}
 									while($f=mysqli_fetch_array($sql)){
 										echo'<option value='.$f['codDependencias'].'>'.$f['nomDependencias'].'</option>';
 									}									    

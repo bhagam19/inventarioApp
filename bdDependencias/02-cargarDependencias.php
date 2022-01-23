@@ -1,8 +1,6 @@
 <?php
     include('../conexion/datosConexion.php');
-
-	setlocale(LC_MONETARY,"es_CO"); //para establecer el localismo para la moned
-	
+	setlocale(LC_MONETARY,"es_CO"); //para establecer el localismo para la moned	
 	$tabla="dependencias";
 	@$ordenarPor=$_REQUEST['ordenarPor'];	
 	if($ordenarPor){			
@@ -12,7 +10,7 @@
 	}
 	$respuesta="";
 	$respuesta.='	
-					<tr>									
+					<tr class="filaNuevo">									
 						<td>Nuevo:</td>
 						<td><input type="text" name"dependencia" id="dependencia" style="width:150px" onkeyup="showHint(this.value)"></td>
 						<td><select name="ubicacion" id="ubicacion">
@@ -46,13 +44,9 @@
 						<td class="img"><img src="../art/ok.svg" title="Guardar" onclick="registrarDependencia()"/></td>
 					</tr>
 				';
-
 	while($fila1=mysqli_fetch_array($sql01)){//$fila1 es un arr. multidemensional que contiene arr. con cada registro de cada tabla.
-
-		$respuesta.=
-			'
-					<tr>									
-						
+		$respuesta.='
+					<tr>
 						<td style="text-align:center">'.$fila1["codDependencias"].'</td>
 						<td style="text-align:left;!important" id="tdDependencia'.$fila1["codDependencias"].'" title="Dobleclick para modificar" ondblclick="actualizarInputDependencia(this.id,'.$fila1["codDependencias"].',\'nomDependencias\',\'dependenciaAct'.$fila1["codDependencias"].'\')">'.$fila1["nomDependencias"].'</td>
 			';
@@ -63,8 +57,7 @@
 			$respuesta.=
 			'
 						<td style="text-align:left;!important" id="tdUbicacion'.$fila1["codDependencias"].'" title="Dobleclick para modificar" ondblclick="actualizarSeleccionDependencia(this.id,'.$fila1["codDependencias"].',\'codUbicacion\',\'ubicacionAct'.$fila1["codDependencias"].'\','.$fila1['codUbicacion'].',\''.$tabla.'\',\''.$campo.'\')">'.$fila2["nomUbicacion"].'</td>
-			';	
-
+			';
 		}
 		$tabla="usuarios";
 		$campo="usuarioID";
@@ -77,10 +70,8 @@
 					</tr>
 			';
 		}	
-	}
-	
+	}	
 	mysqli_free_result($sql01); 
 	echo $respuesta;
 	mysqli_close($conexion);
-
 ?>

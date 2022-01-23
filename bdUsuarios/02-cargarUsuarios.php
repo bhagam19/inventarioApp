@@ -1,8 +1,6 @@
 <?php
     include('../conexion/datosConexion.php');
-
-	setlocale(LC_MONETARY,"es_CO"); //para establecer el localismo para la moned
-	
+	setlocale(LC_MONETARY,"es_CO"); //para establecer el localismo para la moneda	
 	$tabla="usuarios";
 	@$campo=$_REQUEST['campo'];
 	@$direccion=$_REQUEST['direccion'];	
@@ -15,15 +13,12 @@
 				$sql01=mysqli_query($conexion,"SELECT * FROM ".$tabla." ORDER BY ".$campo." DESC");
 				break;
 		}
-
 	}else{
 		$sql01=mysqli_query($conexion,"SELECT * FROM ".$tabla);				
 	}
-
 	$respuesta="";
-
 	$respuesta.='	
-					<tr>									
+					<tr class="filaNuevo">									
 						<td>Nuevo:</td>
 						<td><input type="text" name"usuarioCED" id="usuarioCED" style="width:50px" onkeyup="showHint(this.value)"></td>
 						<td><input type="text" name"apellidos" id="apellidos" style="width:150px" onkeyup="showHint(this.value)"></td>
