@@ -15,11 +15,19 @@ if($mod[1]==1){ //Aquí se alerta una modificación.
 }	
 //========================DETALLES DEL BIEN======================
 if($mod[2]==1){ //Aquí se alerta una modificación.
-	$salida.= 
-	'	<td id="tdDetalles'.$fila1["codBien"].'" class="sticky5" style="background:#D2F6B3; border: 2px solid gray"  title="Valor original: '.$fila1["detalleDelBien"].'.&#13;&#13;Nuevo Valor: '.$vlr[2].'&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador." ><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" onclick="mostrarEdicionDetalles(event,\''.$fila1["codBien"].'\',\''.$fila1["nomBien"].'\',\''.$fila1["detalleDelBien"].'\',\''.$queryUrl.'\')" style="width:10px; height:10px" src="../art/modificar.svg"/> '.$vlr[2].'</td>';
+	$salida.='
+		<td id="tdDetalles'.$fila1["codBien"].'" class="sticky5" style="background:#D2F6B3; border: 2px solid gray"  title="Valor original: '.$fila1["detalleDelBien"].'.&#13;&#13;Nuevo Valor: '.$vlr[2].'&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador." >
+			<img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" onclick="mostrarEdicionDetalles(event,\''.$fila1["codBien"].'\',\''.$fila1["nomBien"].'\',\''.$fila1["detalleDelBien"].'\',\''.$queryUrl.'\')" style="width:10px; height:10px" src="../art/modificar.svg"/>
+			'.$vlr[2].'
+		</td>
+	';
 }else{
-	$salida.= 
-	'	<td id="tdDetalles'.$fila1["codBien"].'"class="sticky5" ><img style="width:10x;height:10x" title="Click para modificar.&#13;&#13;Sugerencias del Detalle: Característica Especial || Tamaño || Material || Color || Marca || Otra.&#13;&#13;Valor Actual: '.$fila1["detalleDelBien"].'" src="../art/editar.png" onclick="mostrarEdicionDetalles(event,\''.$fila1["codBien"].'\',\''.$fila1["nomBien"].'\',\''.$fila1["detalleDelBien"].'\',\''.$queryUrl.'\')">   '.$fila1["detalleDelBien"].'</td>';
+	$salida.='
+		<td id="tdDetalles'.$fila1["codBien"].'"class="sticky5" >
+			<img style="width:10x;height:10x" title="Click para modificar.&#13;&#13;Sugerencias del Detalle: Característica Especial || Tamaño || Material || Color || Marca || Otra.&#13;&#13;Valor Actual: '.$fila1["detalleDelBien"].'" src="../art/editar.png" onclick="mostrarEdicionDetalles(event,\''.$fila1["codBien"].'\',\''.$fila1["nomBien"].'\',\''.$fila1["detalleDelBien"].'\',\''.$queryUrl.'\')">
+			'.$fila1["detalleDelBien"].'
+		</td>
+	';
 }
 //========================CANTIDADES======================
 if($mod[7]==1){ //Aquí se alerta una modificación.

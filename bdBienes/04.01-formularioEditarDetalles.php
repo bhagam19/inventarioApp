@@ -13,7 +13,7 @@
     @$row1 = mysqli_num_rows($sql); //Verificamos cuántas filas cumplen con la consulta "$sql"
 	if($row1==1){			
 		while($f=mysqli_fetch_array($sql)){
-			$carEspecial=$f['carEspecial'];
+			$carEspecial=$f['carEsp'];
 			$tamano=$f['tamano'];
 			$material=$f['material'];
 			$color=$f['color'];

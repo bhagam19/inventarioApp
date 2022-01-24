@@ -54,7 +54,7 @@
 		echo("Error description: " .mysqli_connect_errno());
 		//echo "no";
 	}
-	$sql02=mysqli_query($conexion,"INSERT INTO detallesDeBienes (codBien, carEspecial, tamano, material, color, marca, otra) 
-												VALUES (".$id.",'".$cEspecial."','".$cTamano."','".$material."','".$color."','".$marca."','".$otra."')");
+	$sql02=mysqli_query($conexion,"INSERT INTO detallesDeBienes (codBien, carEsp, tamano, material, color, marca, otra) 
+									VALUES (".$id.",'".$cEspecial."','".$cTamano."','".$material."','".$color."','".$marca."','".$otra."')");
 	mysqli_close($conexion);
 ?>

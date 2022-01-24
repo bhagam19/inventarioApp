@@ -211,7 +211,7 @@ function actualizarInputBien(tdId,numReg,campo,inpId,q,px,event){
 	
 }
 function confirmarAccion(tipo,id,valor,campo,q){
-	//alert(q);
+	//alert(tipo+", "+id+", "+valor+", "+campo+", "+q);
 	var confirmacion;
 	if(tipo===1){
 		confirmacion=confirm("¿Con seguridad desea aprobar el cambio?");
@@ -226,7 +226,7 @@ function confirmarAccion(tipo,id,valor,campo,q){
 	}
 }
 function actualizarRegistroBien(id,valor,campo,q){
-	// alert(id+", "+valor+", "+campo+", "+q);
+	//alert(id+", "+valor+", "+campo+", "+q);
 	valor=ucwords(valor.toLowerCase());  
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", "../bdBienes/04-actualizarBien.php"+q+"&id="+id+"&valor="+valor+"&campo="+campo, false);
@@ -602,7 +602,7 @@ function actualizarRegistroDetBien(q){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", "../bdBienes/04.02-actualizarDetBien.php?id="+id+"&vlr1="+vlr1+"&vlr2="+vlr2+"&vlr3="+vlr3+"&vlr4="+vlr4+"&vlr5="+vlr5+"&vlr6="+vlr6, false);
 	xmlhttp.send();
-	// alert(xmlhttp.responseText.trim());	
+	//alert(xmlhttp.responseText.trim());	
 	var xmlhttp = new XMLHttpRequest();	
 	xmlhttp.open("GET","../bdBienes/01.00-cargarArchivos.php"+q,false);
 	xmlhttp.send();
