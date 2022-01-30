@@ -111,37 +111,6 @@ function mostrarSubMenu(){
 		}	
 	}
 }
-$(document).ready(function(){
-	$(window).resize(function(){
-		if ($(document).width() > 450){
-			$('.menuNavegacion .menu').css({'display' : 'block'});
-		}
-		if ($(document).width() < 450){
-			$('.menuNavegacion .menu').css({'display' : 'none'});
-			$('.menu li ul').slideUp();
-			$('.menu li').removeClass('activado');
-		}
-	});	
-});
-function mostrarFormularios(clase){ //mostrar formularios	
-	$('#separador').fadeIn('fast',function(){
-		$(clase).animate({'top':'35%','margin-top':'-150px'},500);
-	});
-}//mostrar formularios
-$(document).ready(function(){ //ocultar formularios
-	$('.cerrar').click(function(){
-		var elemento=$(this).parent().parent();		
-		elemento.animate({'top':'-500px'},500,function(){
-			$('#separador').fadeOut('fast');
-		});
-	});
-});//ocultar formularios
-$(document).ready(function() {//mover formularios
-	$("#formulario").draggable({stack:"#formulario"}, {handle:"#handler"});
-});//mover formularios
-$(document).ready(function() {//mover formulario Mis Reservaciones
-	$("#formulario").draggable({stack:"#formulario"}, {handle:"#handler"});
-});//mover formulario Mis Reservaciones
 function registrarUsuario(id){ //id=1 representa que no hay formulario que ocultar. (e.g. formularioNuevoUsuario.php)
 	var usuario= document.getElementById("usuario").value;
 	var contrasena= document.getElementById("contrasena").value;
@@ -266,3 +235,31 @@ function reinstalarBD(){
 	}
 
 }
+$(document).ready(function(){
+	$(window).resize(function(){
+		if ($(document).width() > 450){
+			$('.menuNavegacion .menu').css({'display' : 'block'});
+		}
+		if ($(document).width() < 450){
+			$('.menuNavegacion .menu').css({'display' : 'none'});
+			$('.menu li ul').slideUp();
+			$('.menu li').removeClass('activado');
+		}
+	});	
+});
+$(document).ready(function(){ //ocultar formularios
+	$('.cerrar').click(function(){
+		var elemento=$(this).parent().parent();		
+		elemento.animate({'top':'-500px'},500,function(){
+			$('#separador').fadeOut('fast');
+		});
+	});
+});//ocultar formularios
+$(document).ready(function() {//mover formulario Mis Reservaciones
+	$("#formulario").draggable({stack:"#formulario"}, {handle:"#handler"});
+});//mover formulario Mis Reservaciones
+function mostrarFormularios(clase){ //mostrar formularios	
+	$('#separador').fadeIn('fast',function(){
+		$(clase).animate({'top':'35%','margin-top':'-150px'},500);
+	});
+}//mostrar formularios
