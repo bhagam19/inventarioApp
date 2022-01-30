@@ -42,7 +42,12 @@
     $codigo=$_SESSION['permiso'];
     if($codigo==6){ 
       echo'
-        <div id="reestablecerBD">
+		<!--<div id="draggable" class="ui-widget-content">
+			<p>Drag me around</p>
+		</div>-->
+	  	<div id="reestablecerBD">	
+		<!--<a href="../bdBienes/dragable.php">dragable</a>-->
+		
           <form enctype="multipart/form-data" action="../bdBienes/07-cargarBienesExcel.php" method="POST">
             <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
             <input name="subir_archivo" type="file" />
