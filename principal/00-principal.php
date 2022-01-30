@@ -20,6 +20,7 @@
 		<script type="text/javascript" src="../jquery/jquery.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
   		<script type="text/javascript" src="00-principal.js"></script>
   		<script type="text/javascript" src="../bdAlmacenamiento/00-almacenamientos.js"></script>
   		<script type="text/javascript" src="../bdCategorias/00-categorias.js"></script>
@@ -30,6 +31,13 @@
   		<script type="text/javascript" src="../bdUbicaciones/00-ubicaciones.js"></script> 	
   		<script type="text/javascript" src="../bdUsuarios/00-usuarios.js"></script> 
   		<script type="text/javascript" src="../bdBienes/00-bienes.js"></script>   
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+		<script>
+			$(function(){
+				$("#draggable").draggable();
+			});
+		</script>
   		<script>
 			$(function(){
 				//alert("La resolución de tu pantalla es: " + screen.width + " x " + screen.height);				
@@ -42,21 +50,16 @@
 				}
 				//document.getElementById("contenedor").style.height = "100px";
 				//document.getElementById("contenedor").style.width = "50px";
-			$("#formEditDet").draggable();
-			});
-
-		</script>
-		
-	</head>
-	
+			});			
+	</script>	
+	</head>	
 	<body >
 		<div id="contenedorGlobal">			
 			<?php
 				//$paginaLogs="../principal/principal";//para escribir los Logs
 				//$linkLogs="Principal";//para escribir los Logs
 				//include('../bdLogs/01-bdEscribirLogs.php');
-				include('01-estructuraPermisosPpal.php');
-        
+				include('01-estructuraPermisosPpal.php');        
 			?>
 		</div>
 
