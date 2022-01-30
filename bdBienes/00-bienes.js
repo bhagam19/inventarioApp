@@ -570,8 +570,10 @@ function mostrarEdicionDetalles(event,dCB,dNB,dDB,q){
 	  	//alert("x: "+x+" || y:"+y);
 	  	//alert("screen= "+screen.height+ " || y="+ y + " || h= "+ h +" || y+h: "+(y+h));
 	  	$('#formEditDet').css('visibility', 'visible');
-	  	$('#formEditDet').css('top', sY+y-42+"px");
-	    $('#formEditDet').css('left', x-40+"px");
+	  	//$('#formEditDet').css('top', sY+y-42+"px");
+	    //$('#formEditDet').css('left', x-40+"px");
+		//$('#formEditDet').css('top', sY+y-42+"px");
+	    //$('#formEditDet').css('left', x-40+"px");
 	  		  	
 	  	// if((y+h)<(screen.height-180)){
 	   //  	$('#formEditDet').css('top', sY+y-42+"px");
@@ -665,11 +667,7 @@ function mostrarEdicionBienes(event,q,tipo,eCB,u,uID,uP,eNB,eDB,eEB,eTI,eDp,eOr,
 	 	var y=event.clientY;
 	 	//alert("x: "+x+" || y:"+y);
 	    $('#formEditBienes').css('visibility', 'visible');
-	    $('#formEditBienes').css('top', "95px");
-	    $('#formEditBienes').css('left', "50px");	    
+	    $('#formEditBienes').css('top', "150px");
+	    $('#formEditBienes').css('left', "90px");	    
 	  }	 
 }
-(document).ready(function() {//mover formulario formEditDet
-	$("#formEditDet").draggable({stack:"#formEditDet"}, {handle:"#formEditDetheader"});
-});//mover formulario formEditDet
-
