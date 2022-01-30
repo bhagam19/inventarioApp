@@ -1,8 +1,6 @@
 	<?php
 include('../conexion/datosConexion.php');
-
 date_default_timezone_set('America/Bogota');
-
 function fechaCastellano ($fecha) {
 	$fecha = substr($fecha, 0, 10);
 	$numeroDia = date('d', strtotime($fecha));
@@ -17,25 +15,22 @@ function fechaCastellano ($fecha) {
 	$nombreMes = str_replace($meses_EN, $meses_ES, $mes);
 	$time = time();
 	$hora= strftime("%I:%M ").strtolower(strftime("%p"));
-	return $nombredia." ".$numeroDia." de ".$nombreMes." de ".$anio.", ".$hora;
-}
-	
+	return $nombredia." ".$numeroDia." de ".$nombreMes." de ".$anio;
+}	
+$fechaCorta= date("Y/m/d");
 $miFecha = date('d-m-Y H:i:s');
-
 @$usuarioID=$_GET['usuarioID'];
 $responsable="";
 $CED="";
 $cont1=0;
 $cont2=0;
 $pgActa=1;
-
 include('10.02-cargarEncabezadoHoja.php');
-
 	echo'
 			<div id="identificacion">
 				<h4 style="text-align:center;">ACTA DE ENTREGA DE INVENTARIO // '.$responsable.' - Página '.$pgActa.'</h4>	
 				<h4 style="font-weight:normal;text-align:left;">Entrerríos, '.fechaCastellano($miFecha).'</h4>
-				<h4 style="font-weight:normal;text-align:justify">El Rector de la IE Entrerríos hace entrega del siguiente inventario al Docente <span style="font-weight:bold">'.$responsable.'</span>, identificado con CC. '.@number_format($CED).'.</h4>
+				<h4 style="font-weight:normal;text-align:justify">El Rector de la IE Entrerríos hace entrega del siguiente inventario al docente <span style="font-weight:bold">'.$responsable.'</span>, identificado con CC. '.@number_format($CED).'.</h4>
 			</div>
 
 			<div id="tabla2">	
@@ -360,5 +355,7 @@ include('10.02-cargarEncabezadoHoja.php');
 			';
 
 include('10.03-cargarPieHoja.php');
+
+
 	
 ?>
