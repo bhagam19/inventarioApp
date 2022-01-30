@@ -630,23 +630,30 @@ select{
 .tablaBD .malo:hover{
 	background:#F83D4A !important;	
 }
+#draggable {
+	width: 150px; 
+	height: 150px; 
+	padding: 0.5em; 
+	background-color: green;	
+	z-index:9;
+}
 #formEditDet{
 	position:absolute;
 	visibility:hidden;
+	top:150px;
+	left:390px;
 	width:250px;
 	border:1px solid #EEEEEE;
 	background:white;	
 	box-shadow:0px 0px 5px black;
 	border-radius:5px;
 	padding-bottom:20px;
-	z-index:3;
+	z-index:9;
 	cursor:default;
 }
 #formEditDetheader {
 	padding: 2px 3px;
-	font-size:10px;
-  	font-weight:bold;  	
-  	font-family:arial,serif;
+  	font-weight:bold; 
   	color:#0B0B61;
   	text-align: center;
   	border-radius:5px 5px 0px 0px;
@@ -655,15 +662,11 @@ select{
 }
 #detNomBien{
 	text-align:left;
-	font-size: 10px;
-	font-family:arial, serif;
 	font-weight:bold; 
 	background:white;	
 }
 #detDetBien{
 	text-align:left;
-	font-size: 10px;
-	font-family:arial, serif;
 	font-weight:normal; 
 	background:white;	
 }
@@ -672,8 +675,6 @@ select{
 	font-weight:bold; 
 }
 .detalles input{
-	font-size: 10px;
-	font-family:arial, serif;
 	background:white;	
     border-radius: 5px;
     border:1px solid #19549E;
@@ -682,8 +683,6 @@ select{
 	outline: 0 none;
 }
 .detalles input:focus{
-	font-size: 10px;
-	font-family:arial, serif;
 	background:white;
 	border-color: #2F900E;
     box-shadow: 0 1px 1px rgba(47, 144, 14, 0.075)inset, 0 0 8px rgba(96, 228, 51,0.6);
@@ -691,8 +690,6 @@ select{
     border-radius: 1px;
 }
 #btnDetEnviar{
-	font-size: 10px;
-	font-family:arial, serif;
 	color:white;
 	background:#19549E;	
     border-radius: 5px;
@@ -801,10 +798,8 @@ select{
 	background:#F83D4A !important;	
 }
 /*============*/
-
 #formEditBienes{
 	position:absolute;
-	top:-600px;
 	visibility:hidden;
 	width:auto;
 	border:1px solid #EEEEEE;
@@ -817,19 +812,15 @@ select{
 #formEditBienesheader{
 	width:auto;
 	padding: 3px 0px;
-	font-size:12px;
+	font-size: 22px;
   	font-weight:bolder;	
-  	font-family:arial,serif;
   	color:#0B0B61;
   	text-align: center;
   	border-radius:5px 5px 0px 0px;
   	background: linear-gradient(90deg, rgba(191, 239, 193,1) 0%, rgba(255, 255, 255,1) 30%, rgba(255, 255, 255,1) 60%,rgba(192, 224, 247 ,1) 100%); 	
   	cursor: move; 
 }
-
-.formBienes{
-	font-size:10px;
-	font-family:arial, serif;
+.formBienes{	
 	font-weight:bold;
 	border-collapse:collapse;
 }
@@ -867,7 +858,6 @@ select{
 input, textarea, select{
   width: 100px;
   padding:2px 2px;
-  font-family:arial, serif;
   background:white;	
   border-radius: 5px;
   border:1px solid #19549E;
