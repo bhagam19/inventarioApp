@@ -9,7 +9,7 @@
 
 	if ($result->num_rows > 0) {
 	    while ($row = $result->fetch_assoc()) {                
-	        $html .= '<div><a class="suggest-element" data="'.$row['origenDelBien'].'" id="element'.$row['origenDelBien'].'">'.$row['origenDelBien'].'</a></div>';
+	        $html .= '<div><a class="suggest-element" data="'.$row['origenDelBien'].'" id="element'.str_replace(" ", "_", $row['origenDelBien']).'">'.$row['origenDelBien'].'</a></div>';
 	    }
 	}
 	echo $html;

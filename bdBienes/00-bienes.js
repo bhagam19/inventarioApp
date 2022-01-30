@@ -55,10 +55,10 @@ function actualizarSeleccionBien(tdId,numReg,campo1,selId,value,tabla,campo2,q,c
 	xmlhttp.open("GET","../bdBienes/02-cargarListasBienes.php?actual="+texto+"&tabla="+tabla+"&campo1="+campo1+"&campo2="+campo2,false);
 	xmlhttp.send();
 	// alert(xmlhttp.responseText.trim());	
-	var contenido =	'<select name="'+selId+'" id="'+selId+'" style="width:'+c+'; height:19px;color:gray;font-weight:bold;font-family:‘Lucida Console’, Monaco, monospace;"><option value='+value+'>'+texto+'</option>'+
+	var contenido =	'<select name="'+selId+'" id="'+selId+'" style="width:'+c+'; height:19px;"><option value='+value+'>'+texto+'</option>'+
 					xmlhttp.responseText.trim() + '</select>'+" " +
-					'<input type="image" style="width:10px; height:10px;position:relative;top:5px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+selId+'.value,\''+campo1+'\',\''+q+'\')">'+" "+
-    			'<input type="image" style="width:10px; height:10px;position:relative;top:5px" src="../art/cancelar.svg" onclick="cancelarAccionBien(\''+q+'\')">';
+					'<input type="image" style="width:10px; height:10px;position:relative;top:2px" src="../art/ok.svg" onclick="actualizarRegistroBien('+numReg+','+selId+'.value,\''+campo1+'\',\''+q+'\')">'+" "+
+    			'<input type="image" style="width:10px; height:10px;position:relative;top:2px" src="../art/cancelar.svg" onclick="cancelarAccionBien(\''+q+'\')">';
     // alert(contenido);				
 	td.innerHTML=contenido;
 	td.onclick="";
@@ -417,12 +417,13 @@ function sugerirBienes(input){
             success: function(data) {
                 //Escribimos las sugerencias que nos manda la consulta
                 $('#suggestions').fadeIn(500).html(data);
-                $('#suggestions').css('top','60px');
-                $('#suggestions').css('left','146px');
+                $('#suggestions').css('top','81px');
+                $('#suggestions').css('left','198px');
                 //Al hacer click en alguna de las sugerencias
                 $('.suggest-element').on('click', function(){
                         //Obtenemos la id unica de la sugerencia pulsada
                         var id = $(this).attr('id');
+						//alert(data);
                         //Editamos el valor del input con data de la sugerencia pulsada
                         $('#inputNomBien').val($('#'+id).attr('data'));
                         //Hacemos desaparecer el resto de sugerencias
@@ -443,8 +444,8 @@ function sugerirOrigen(input){
             success: function(data) {
                 //Escribimos las sugerencias que nos manda la consulta
                 $('#suggestions').fadeIn(500).html(data);
-                $('#suggestions').css('top','139px');
-                $('#suggestions').css('left','398px');
+                $('#suggestions').css('top','176px');
+                $('#suggestions').css('left','598px');
                 //Al hacer click en alguna de las sugerencias
                 $('.suggest-element').on('click', function(){
                         //Obtenemos la id unica de la sugerencia pulsada
@@ -470,8 +471,10 @@ function sugerirObservaciones(input){
             success: function(data) {
                 //Escribimos las sugerencias que nos manda la consulta
                 $('#suggestions').fadeIn(500).html(data);
-                $('#suggestions').css('top','295px');
-                $('#suggestions').css('left','146px');
+                $('#suggestions').css('top','362px');
+                $('#suggestions').css('left','198px');	
+				$('#suggestions').css('width','500px');			
+				$('.suggest-element').css('width','496px');
                 //Al hacer click en alguna de las sugerencias
                 $('.suggest-element').on('click', function(){
                         //Obtenemos la id unica de la sugerencia pulsada

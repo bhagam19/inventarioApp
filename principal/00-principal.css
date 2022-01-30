@@ -563,35 +563,6 @@ a.cerrar{
 	white-space:nowrap;
 	background:#084B8A;
 }
-/*
-table thead th:nth-child(1){
-  position: sticky;
-  left: 0;
-  z-index: 3;
-}
-table thead th:nth-child(2){
-  position: sticky;
-  left: 0;
-  z-index: 3;
-}
-table thead th:nth-child(3){
-  position: sticky;
-  left: 0;
-  z-index: 3;
-}
-table thead th:nth-child(4){
-  position: sticky;
-  left: 0;
-  z-index: 3;
-}
-
-table tbody th {
-  position: sticky;
-  left: 0px;
-  background:white;
-  z-index: 2;
-}
-*/
 .tablaBD td{
 	height: 20px;	
 	padding:3px 10px;
@@ -611,12 +582,13 @@ table tbody th {
 .filaFiltros:hover{
 	background:#7A7EA0 !important;
 }
-select{
-	margin:3px;
-	padding:4px 5px;
-	border:1px solid #4163B8;
-	border-radius:10px;
-	color:#4163B8;
+input, select, textarea{
+	padding:2px 2px;
+	background:white;	
+	border-radius: 5px;
+	border:1px solid #19549E;
+	box-shadow:0px 0px 1px 0px #040A8E;	
+	outline: 0 none;
 }
 .tablaBD .regular{
 	background:#FDD15C !important;	
@@ -642,7 +614,7 @@ select{
 	visibility:hidden;
 	top:150px;
 	left:390px;
-	width:250px;
+	width:350px;
 	border:1px solid #EEEEEE;
 	background:white;	
 	box-shadow:0px 0px 5px black;
@@ -826,20 +798,24 @@ select{
 }
 #suggestions, #suggestions2{ /* Este y el que siguen son para las sugerencias de bienes nuevos*/
     position: absolute;
-    width: 100px;
+    width: 204px;
     height: auto;
+	border:1px solid #19549E;
     box-shadow: 2px 2px 8px 0 rgba(0,0,0,.2);
     z-index: 9999;    
 } 
 #suggestions .suggest-element, #suggestions2 .suggest-element{
     float: left;
-    width: 100%;
+    width: 200px;
     padding: 2px 2px;
     border-top: 1px solid lightgray;
     background-color: white;    
     cursor: pointer;
 }
-
+#suggestions .suggest-element:hover, #suggestions2 .suggest-element:hover{
+    background-color: rgb(182, 174, 174);    
+    cursor: pointer;
+}
 .formBienes td{
 	padding: 2px 5px;
 }
@@ -855,20 +831,21 @@ select{
 	font-weight:bold;
 	background-color:#E0F2F7;
 }
-input, textarea, select{
-  width: 100px;
-  padding:2px 2px;
-  background:white;	
-  border-radius: 5px;
-  border:1px solid #19549E;
-  border-radius:1px;
-  box-shadow:0px 0px 1px 0px #040A8E;	
-  outline: 0 none;
+.formBienes input, .formBienes textarea, .formBienes select{
+	width: 200px;
+	padding:2px 2px;
+	background:white;	
+	border-radius: 5px;
+	border:1px solid #19549E;
+	border-radius:1px;
+	box-shadow:0px 0px 1px 0px #040A8E;	
+	outline: 0 none;
 }
-textarea{
-  resize: both;
+.formBienes textarea{
+	width: 400px;
+  	resize: both;
 }
-input:focus, textarea:focus, select:focus{
+.formBienes input:focus, .formBienes textarea:focus, .formBienes select:focus{
 	background:white;
 	border-color: #2F900E;
     box-shadow: 0 1px 1px rgba(47, 144, 14, 0.075)inset, 0 0 8px rgba(96, 228, 51,0.6);
@@ -876,8 +853,6 @@ input:focus, textarea:focus, select:focus{
     border-radius: 1px;
 }
 #btnFormBienesEnviar{
-	font-size: 10px;
-	font-family:arial, serif;
 	color:white;
 	background:#19549E;	
     border-radius: 5px;
@@ -903,9 +878,6 @@ input:focus, textarea:focus, select:focus{
   background:black;
   z-index:99;
 }
-
-
-
 @media screen and (max-width:800px){
 	/* Esta es para mi celulara*/
 	#encabezadoGral{
