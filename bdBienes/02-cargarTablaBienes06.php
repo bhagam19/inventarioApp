@@ -1,7 +1,7 @@
 <?php 
 	$salida.= '
 		<td id="td'.$fila1["codBien"].'" class="img sticky1" ><img src="../art/eliminar.svg" title ="Eliminar este bien." onclick="eliminarBien('.$fila1["codBien"].',\''.$queryUrl.'\')"/></td>
-		<td class="img sticky2" ><img title ="Editar este bien." src="../art/editar.svg" onClick="mostrarEdicionBienes(event,\''.$queryUrl.'\',2,'.$fila1["codBien"].',\''.$fila1["nomBien"].'\',\''.$fila1["detalleDelBien"].'\',\''.$fila1["codEstado"].'\',\''.$fila1["codCategoria"].'\',\''.$fila1["codDependencias"].'\',\''.$fila1["origenDelBien"].'\',\''.$fila1["fechaAdquisicion"].'\',\''.$fila1["precio"].'\',\''.$fila1["cantBien"].'\',\''.$fila1["codAlmacenamiento"].'\',\''.$fila1["codMantenimiento"].'\',\''.$fila1["observaciones"].'\')"></td>
+		<td class="img sticky2" ><img style="width:15px;height:15px" title ="Duplicar este bien." src="../art/duplicar.png" onClick="duplicarBien(\''.$queryUrl.'\','.$fila1["codBien"].')"></td>
 		<td class="sticky3" style="text-align:center">'.$fila1["codBien"].'</td>
 	';	
 //========================NOMBIEN======================
@@ -26,7 +26,7 @@ if($mod[2]==1){ //Aquí se alerta una modificación.
 }else{
 	$salida.='
 		<td id="tdDetalles'.$fila1["codBien"].'" class="sticky5" >
-			<img style="width:10x;height:10x" title="Click para modificar.&#13;&#13;Sugerencias del Detalle: Característica Especial || Tamaño || Material || Color || Marca || Otra.&#13;&#13;Valor Actual: '.str_replace(chr(34),chr(126),$fila1["detalleDelBien"]).'" src="../art/editar.png" onclick="mostrarEdicionDetalles(event,\''.$fila1["codBien"].'\',\''.$fila1["nomBien"].'\',\''.$fila1["detalleDelBien"].'\',\''.$queryUrl.'\')">
+			<img style="width:10px;height:10px" title="Click para modificar.&#13;&#13;Sugerencias del Detalle: Característica Especial || Tamaño || Material || Color || Marca || Otra.&#13;&#13;Valor Actual: '.str_replace(chr(34),chr(126),$fila1["detalleDelBien"]).'" src="../art/editar.png" onclick="mostrarEdicionDetalles(event,\''.$fila1["codBien"].'\',\''.$fila1["nomBien"].'\',\''.$fila1["detalleDelBien"].'\',\''.$queryUrl.'\')">
 			'.$fila1["detalleDelBien"].'
 		</td>
 	';
@@ -38,7 +38,7 @@ if($mod[2]==1){ //Aquí se alerta una modificación.
 	}else{
 		$salida.='
 			<td id="tdCant'.$fila1["codBien"].'" class="sticky6" style="text-align:right;padding:0px 20px">
-				<img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'cantBien\',\'cantAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'35px\',event)">
+				<img style="width:10px;height:10px" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'cantBien\',\'cantAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'35px\',event)">
 				'.$fila1["cantBien"].'
 			</td>
 		';
@@ -122,7 +122,7 @@ $salida.= '
 	}else{
 		$salida.='
 			<td id="tdOrigen'.$fila1["codBien"].'">
-				<img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'origenDelBien\',\'origenAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'80px\',event)">
+				<img style="width:10px;height:10px" title="Click para modificar" src="../art/editar.png" onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'origenDelBien\',\'origenAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'80px\',event)">
 				'.$fila1["origenDelBien"].'
 			</td>
 		';
@@ -140,7 +140,7 @@ $salida.= '
 	}else{
 		$salida.='	
 			<td id="tdFecha'.$fila1["codBien"].'" style="text-align:center">
-				<img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" 	onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'fechaAdquisicion\',\'fechaAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'65px\',event)">
+				<img style="width:10px;height:10px" title="Click para modificar" src="../art/editar.png" 	onclick="actualizarInputBien(this.parentNode.id,'.$fila1["codBien"].',\'fechaAdquisicion\',\'fechaAct'.$fila1["codBien"].'\',\''.$queryUrl.'\',\'65px\',event)">
 				'.$fila1["fechaAdquisicion"].'
 			</td>
 		';	

@@ -39,7 +39,9 @@
 				//$respuesta.= "Entro aqui 01 || ";
 				$sql=mysqli_query($conexion,"UPDATE bienes SET ".$campo."='".$valor."' WHERE codBien=".$id);
 				$sql=mysqli_query($conexion,"UPDATE modificacionesBienes SET ".$campo."='".$valor."' WHERE codBien=".$id);
-				$sql=mysqli_query($conexion,"UPDATE detallesDeBienes SET carEsp ='".$vlrSplit[0]."', tamano ='".$vlrSplit[1]."',  material ='".$vlrSplit[2]."', color ='".$vlrSplit[3]."', marca ='".$vlrSplit[4]."', otra ='".$vlrSplit[5]."' WHERE codBien=".$id);
+				if($md==1){
+					$sql=mysqli_query($conexion,"UPDATE detallesDeBienes SET carEsp ='".$vlrSplit[0]."', tamano ='".$vlrSplit[1]."',  material ='".$vlrSplit[2]."', color ='".$vlrSplit[3]."', marca ='".$vlrSplit[4]."', otra ='".$vlrSplit[5]."' WHERE codBien=".$id);
+				}
 				if($campo=="codDependencias"){
 					$sql=mysqli_query($conexion,"UPDATE bienes SET usuarioID =".$usuarioID." WHERE codBien=".$id);
 				}

@@ -44,6 +44,12 @@
 	while($f=mysqli_fetch_array($sql)){
 		$usuarioID=$f['usuarioID'];
 	}
+	$codBien=0;
+    $sql=mysqli_query($conexion, "SELECT MAX(codBien) AS codBien from bienes");
+    if($row = mysqli_fetch_row($sql)){
+        $codBien = trim($row[0]+1);
+    }
+	mysqli_query($conexion,"ALTER TABLE bienes AUTO_INCREMENT=".$codBien);
 	$tabla='bienes';
 	$sql01=mysqli_query($conexion,"INSERT INTO ".$tabla." (nomBien,detalleDelBien,origenDelBien,fechaAdquisicion,precio,cantBien,codCategoria,
 															codDependencias,usuarioID,codAlmacenamiento,codEstado,codMantenimiento,observaciones) 

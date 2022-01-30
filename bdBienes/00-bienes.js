@@ -171,18 +171,7 @@ function actualizarInputBien(tdId,numReg,campo,inpId,q,px,event){
 	var texto="";	
 	inicio=td.innerHTML.indexOf(">");
 	texto=td.innerHTML.substring(inicio+1,td.innerHTML.length);	
-	texto=texto.trim();
-	/*	
-	img1=td.innerHTML.substring(0,4);
-	img2='<img';
-
-	if(img1==img2){//Se revisa que el contenido de la celda no inicie con una imagen.
-		inicio=td.innerHTML.indexOf(">");
-		texto=td.innerHTML.substring(inicio+1,td.innerHTML.length);
-	}else{
-		texto=td.innerHTML;
-	}	
-	*/	
+	texto=texto.trim();	
 	if(campo==='precio'){
 		texto=(texto.substring(1,texto.length-3)).replace(/,/g,""); // Se toma el valor actual y se le quita el signo pesos.
 	}
@@ -398,6 +387,7 @@ function eliminarBien(id,q){
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.open("GET","../bdBienes/05-eliminarBien.php?codBien="+id,false);
 		xmlhttp.send();
+		//alert(xmlhttp.responseText.trim());
 		xmlhttp.open("GET","../bdBienes/01.00-cargarArchivos.php"+q,false);
 		xmlhttp.send();
 		document.getElementById("contenedorTablaBienes").innerHTML="";
@@ -417,7 +407,7 @@ function sugerirBienes(input){
             success: function(data) {
                 //Escribimos las sugerencias que nos manda la consulta
                 $('#suggestions').fadeIn(500).html(data);
-                $('#suggestions').css('top','81px');
+                $('#suggestions').css('top','78px');
                 $('#suggestions').css('left','198px');
                 //Al hacer click en alguna de las sugerencias
                 $('.suggest-element').on('click', function(){
@@ -444,7 +434,7 @@ function sugerirOrigen(input){
             success: function(data) {
                 //Escribimos las sugerencias que nos manda la consulta
                 $('#suggestions').fadeIn(500).html(data);
-                $('#suggestions').css('top','176px');
+                $('#suggestions').css('top','158px');
                 $('#suggestions').css('left','598px');
                 //Al hacer click en alguna de las sugerencias
                 $('.suggest-element').on('click', function(){
@@ -471,7 +461,7 @@ function sugerirObservaciones(input){
             success: function(data) {
                 //Escribimos las sugerencias que nos manda la consulta
                 $('#suggestions').fadeIn(500).html(data);
-                $('#suggestions').css('top','362px');
+                $('#suggestions').css('top','332px');
                 $('#suggestions').css('left','198px');	
 				$('#suggestions').css('width','500px');			
 				$('.suggest-element').css('width','496px');
@@ -673,4 +663,22 @@ function mostrarEdicionBienes(event,q,tipo,eCB,u,uID,uP,eNB,eDB,eEB,eTI,eDp,eOr,
 	    $('#formEditBienes').css('top', "150px");
 	    $('#formEditBienes').css('left', "90px");	    
 	  }	 
+}
+function duplicarBien(q,id){
+	alert("Se va a duplicar el bien "+id);
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", "../bdBienes/08-duplicarBien.php?id="+id, false);
+	xmlhttp.send();
+	//alert(xmlhttp.responseText);
+	if(xmlhttp.responseText.trim()!="no"){
+    	alert("El bien "+id+" se duplicó con exito, con el número "+xmlhttp.responseText+".");
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("GET","../bdBienes/01.00-cargarArchivos.php"+q,false);
+		xmlhttp.send();
+		document.getElementById("contenedorTablaBienes").innerHTML="";
+		document.getElementById("contenedorTablaBienes").innerHTML=xmlhttp.responseText.trim();  
+	}else{
+		alert("El bien "+id+" no se pudo guardar. Por favor, inténtelo de nuevo.");
+    }
+
 }

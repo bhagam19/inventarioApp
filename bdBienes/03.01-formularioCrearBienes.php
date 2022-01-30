@@ -48,9 +48,9 @@
 					</tr>
 					<tr>
 						<td id="tdNomBien">Nombre del Bien Asignado:</td>
-						<td id="tdNomBien"><input id="inputNomBien" onkeyup="sugerirBienes(this.value);cambiarFondoInput(this.id)"></td>
+						<td id="tdNomBien"><input tabindex="1" id="inputNomBien"  onkeyup="sugerirBienes(this.value);cambiarFondoInput(this.id)"></td>
 						<td >Estado del Bien:</td>
-						<td><select  id="selEstBien" onchange="cambiarFondoInput(this.id)">
+						<td><select  tabindex="8" id="selEstBien" onchange="cambiarFondoInput(this.id)">
 								<option value="">Seleccione...</option>
 							';
 									$sql=mysqli_query($conexion,"SELECT * FROM estadoDelBien");
@@ -63,7 +63,7 @@
 					<tr>
 						<td class="derecha" id="tdDetBien" colspan="2" style="font-weight:bolder">DESCRIPCIÓN DEL BIEN</td>
 						<td>Tipo de Inventario:</td>
-						<td><select id="selTipoInv" onchange="cambiarFondoInput(this.id)"> 
+						<td><select tabindex="9" id="selTipoInv" onchange="cambiarFondoInput(this.id)"> 
 								<option value="">Seleccione...</option>
 							';
 									$sql=mysqli_query($conexion,"SELECT * FROM clasesDeBienes");
@@ -75,9 +75,9 @@
 					</tr>
 					<tr>
 						<td class="derecha">Característica Especial:</td>
-						<td class="derecha"><input type="text" id="cEspecial"></td>
+						<td class="derecha"><input tabindex="2" type="text" id="cEspecial"></td>
 						<td>Dependencia:</td>
-						<td><select id="selDep" onchange="cambiarFondoInput(this.id)">
+						<td><select tabindex="10"id="selDep" onchange="cambiarFondoInput(this.id)">
 								<option value="">Seleccione...</option>
 							';
 									$usuarioID="";
@@ -102,33 +102,33 @@
 					</tr>
 					<tr>
 						<td class="derecha">Tamaño:</td>
-						<td class="derecha"><input type="text" name="tamano" value="'.$tamano.'" id="cTamano"></td>
+						<td class="derecha"><input tabindex="3" type="text"  name="tamano" value="'.$tamano.'" id="cTamano"></td>
 						<td>Origen del Bien:</td>
-						<td><input type="text" id="inputOrigen" onkeyup="sugerirOrigen(this.value);cambiarFondoInput(this.id)"></td>
+						<td><input tabindex="11" type="text" id="inputOrigen" onkeyup="sugerirOrigen(this.value);cambiarFondoInput(this.id)"></td>
 					</tr>
 					<tr>
 						<td class="derecha">Material: </td>
-						<td class="derecha"><input type="text" name="material" value="'.$material.'" id="cMaterial"></td>
+						<td class="derecha"><input tabindex="4" type="text" name="material" value="'.$material.'" id="cMaterial"></td>
 						<td>Fecha de Adquisición:</td>
-						<td><input type="date" id="inputFecha" onkeyup="cambiarFondoInput(this.id)"></td>
+						<td><input tabindex="12" type="date" id="inputFecha" onkeyup="cambiarFondoInput(this.id)"></td>
 					</tr>
 					<tr>
 						<td class="derecha">Color:</td>
-						<td class="derecha"><input type="text" name="color" value="'.$color.'" id="cColor"></td>
+						<td class="derecha"><input tabindex="5" type="text" name="color" value="'.$color.'" id="cColor"></td>
 						<td>Precio:</td>
-						<td><input type="text" id="inputPrecio" onkeyup="cambiarFondoInput(this.id)"></td>
+						<td><input tabindex="13"type="text" id="inputPrecio" onkeyup="cambiarFondoInput(this.id)"></td>
 					</tr>
 					<tr>
 						<td class="derecha">Marca:</td>
-						<td class="derecha"><input type="text" name="marca" value="'.$marca.'" id="cMarca"></td>
+						<td class="derecha"><input tabindex="6"type="text" name="marca" value="'.$marca.'" id="cMarca"></td>
 						<td>Cantidad:</td>
-						<td><input type="text" id="inputCant" onkeyup="cambiarFondoInput(this.id)"></td>
+						<td><input tabindex="14" type="text" id="inputCant" onkeyup="cambiarFondoInput(this.id)"></td>
 					</tr>
 					<tr>
 						<td class="derecha">Otra:</td>
-						<td class="derecha"><input type="text" name="otra" value="'.$otra.'" id="cOtra"></td>
+						<td class="derecha"><input tabindex="7" type="text" name="otra" value="'.$otra.'" id="cOtra"></td>
 						<td>Estado de Uso:</td>
-						<td><select id="selAlmacen" onchange="cambiarFondoInput(this.id)">
+						<td><select tabindex="15"id="selAlmacen" onchange="cambiarFondoInput(this.id)">
 								<option value="">Seleccione...</option>
 							';
 									$sql=mysqli_query($conexion,"SELECT * FROM almacenamiento");
@@ -143,7 +143,7 @@
 						<td></td>
 						<td></td>
 						<td>Estado de Mantenimiento:</td>					
-						<td><select id="selMant" onchange="cambiarFondoInput(this.id)">
+						<td><select tabindex="16"id="selMant" onchange="cambiarFondoInput(this.id)">
 								<option value="">Seleccione...</option>
 							';
 									$sql=mysqli_query($conexion,"SELECT * FROM mantenimiento");
@@ -157,7 +157,7 @@
 					</tr>
 					<tr>
 						<td>Observaciones:</td>
-						<td colspan="3" ><textarea id="inputObserv" style="width:335px" onkeyup="sugerirObservaciones(this.value)" placeholder="Observaciones..."></textarea></td>
+						<td colspan="3" ><textarea tabindex="17" id="inputObserv" style="width:335px" onkeyup="sugerirObservaciones(this.value)" placeholder="Observaciones..."></textarea></td>
 					</tr>
 					<tr>
 						<td><br></td>
@@ -165,7 +165,7 @@
 						<td></td>
 						<td></td>
 						<td></td>
-						<td><input type="button" id="btnFormBienesEnviar" value="Enviar" onclick="agregarBien(\''.$qry.'\','.$id.',inputNomBien.value,cEspecial.value,cTamano.value,cMaterial.value,cColor.value,cMarca.value,cOtra.value,selEstBien.value,selTipoInv.value,selDep.value,inputOrigen.value,inputFecha.value,inputPrecio.value,inputCant.value,selAlmacen.value,selMant.value,inputObserv.value)"></td>
+						<td><input tabindex="18" type="button" id="btnFormBienesEnviar" value="Enviar" onclick="agregarBien(\''.$qry.'\','.$id.',inputNomBien.value,cEspecial.value,cTamano.value,cMaterial.value,cColor.value,cMarca.value,cOtra.value,selEstBien.value,selTipoInv.value,selDep.value,inputOrigen.value,inputFecha.value,inputPrecio.value,inputCant.value,selAlmacen.value,selMant.value,inputObserv.value)"></td>
 					</tr>
 				</form>
 			</table>
