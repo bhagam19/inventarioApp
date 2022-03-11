@@ -117,7 +117,6 @@ html{
 }
 #formulario input{
 	font-weight: normal;
-	font-size:0.8vw;
 	border:1px solid #0B0B61;
 	border-radius:5px;
 }
@@ -130,7 +129,6 @@ html{
 	left:30px;
 	color:#0B0B61;
 	font-weight: bold;
-	font-size:10px;
 	border:1px solid #0B0B61;
 	border-radius:5px;
 	background: white;
@@ -142,7 +140,7 @@ html{
 }
 .formularioLogin{
 	top:55px;
-	right:-108px;
+	right:-180px;
 }
 #sesionLogedIn{
 	position:relative;
@@ -448,16 +446,25 @@ a.cerrar{
 	left:500px;
 	padding:5px 10px;
 }
+.totalBienes2{
+	visibility: hidden;
+}
 .tiempoCarga{
 	top:5px;
 	left:710px;
 	cursor:pointer !important;
 	padding:5px 10px;
 }
+.tiempoCarga2{
+	visibility: hidden;
+}
 .regEncontrados{
 	position:relative !important;	
 	margin:3px;	
 	padding:5px 10px;
+}
+.regEncontrados2{
+	display:none;
 }
 .select{
 	position:relative !important;	
@@ -480,6 +487,9 @@ a.cerrar{
   background:white;  
   cursor:pointer;
   z-index:9;
+}
+#avisoModificaciones2{
+	visibility: hidden;
 }
 .avisoModifPend{
   border:3px solid red;
@@ -528,10 +538,10 @@ a.cerrar{
     overflow: scroll;
 }
 .tablaBD tbody tr:nth-child(even) {
-	background-color:#acc7d4;
+	background-color:#e8eef1;
 }
 .tablaBD tbody tr:hover {
-	background-color: #8c8f7f;
+	background-color: #d9e7fa;
 }
 .tablaBD{
 	position: relative;
@@ -736,7 +746,7 @@ input, select, textarea{
 .tablaBD tbody tr:nth-child(even) .sticky3, .tablaBD  tbody tr:nth-child(even) .sticky4,
 .tablaBD tbody tr:nth-child(even) .sticky5, .tablaBD  tbody tr:nth-child(even) .sticky6,
 .tablaBD tbody tr:nth-child(even) .sticky7{
-	background-color:#acc7d4;
+	background-color:#e8eef1;
 }	
 .tablaBD tbody tr:nth-child(odd) .sticky1, .tablaBD  tbody tr:nth-child(odd) .sticky2,
 .tablaBD tbody tr:nth-child(odd) .sticky3, .tablaBD  tbody tr:nth-child(odd) .sticky4,
@@ -747,11 +757,7 @@ input, select, textarea{
 
 .tablaBD tbody tr:hover .sticky1, .tablaBD tbody tr:hover .sticky2, .tablaBD tbody tr:hover .sticky3, .tablaBD tbody tr:hover .sticky4,
 .tablaBD tbody tr:hover .sticky5, .tablaBD tbody tr:hover .sticky6, .tablaBD tbody tr:hover .sticky7{
-	background-color: #8c8f7f;
-}
-.tablaBD tbody tr:hover .sticky1, .tablaBD tbody tr:hover .sticky2, .tablaBD tbody tr:hover .sticky3, .tablaBD tbody tr:hover .sticky4,
-.tablaBD tbody tr:hover .sticky5, .tablaBD tbody tr:hover .sticky6, .tablaBD tbody tr:hover .sticky7{
-	background-color: #8c8f7f;
+	background-color: #d9e7fa;
 }
 .tablaBD .regular .sticky1,.tablaBD .regular .sticky2,.tablaBD .regular .sticky3,.tablaBD .regular .sticky4,
 .tablaBD .regular .sticky5,.tablaBD .regular .sticky6,.tablaBD .regular .sticky7{
@@ -878,27 +884,27 @@ input, select, textarea{
   background:black;
   z-index:99;
 }
-@media screen and (max-width:800px){
+@media(max-width:30em){
 	/* Esta es para mi celulara*/
 	#encabezadoGral{
 		height:100px;
 	}
 	.btnMenu{
 		position:relative;
-		top:20px;
-		left:40px;
-		width:60px;
-		height:60px;
+		top:25px;
+		left:10px;
+		width:50px;
+		height:50px;
 		cursor:pointer;
 	}
 	.btnMenu img{
-		width:60px;
-		height:60px;
+		width:50px;
+		height:50px;
 	}
 	.logo{
 		position:relative;
-	    top:-55px;
-	    left:120px;
+	    top:-45px;
+	    left:70px;
 	    height:90px;
 	    width:90px;
 	}
@@ -908,34 +914,43 @@ input, select, textarea{
 	}
 	.tituloCinta{	
 		position:relative;
-		top:-140px;
-		left:215px;
-		width:450px;
+		top:-135px;
+		left:160px;
+		width:150px;
 		height: auto;
-		font-size:5vw;
+		font-size:6vw;
 	}
 	.contenidoCinta{
 		position:relative;
-		top:-130px;
+		top:-125px;
 		left:0px;
-		width:100%;
+		width: 100%;
 		height: auto;
-		padding: 5px 0px;
-		font-size:2.3vw;
+		font-size:4.5vw;
 		box-shadow: 1px 1px 1px 1px gray;
 		background: white;
 	}
+	.contenidoCinta ul{
+		top: 0px;
+		display: inline;
+	}
+	.contenidoCinta li{
+		display: inline;
+    	margin: 10px;
+		padding:0px 5px;
+		color:#084B8A;
+	}
 	.inicioSesionCinta{
 		position:relative;
-		top:-130px;
-		left:-15px;
-		font-size:3.5vw;
+		top:-125px;
+		right:0px;
+		font-size:5vw;
 	}
 	/*==== LogedIn====*/
 	#sesionLogedIn{
 		position: relative;
-		top: -255px;
-		right: 30px;
+		top: -267px;
+		right: 0px;
 		width: 85px;
 		height:85px;
 		border: 1px solid #0B0B61;
@@ -975,51 +990,62 @@ input, select, textarea{
 		border-radius:5px;
 		background: #EBEEF8;
 	}
+	#formulario .btnLogin{		
+		background-color: #d4deee;
+	}
 	.formularioLogin{
 		position:absolute;
-		top:190px;
-		right:-45px;	
+		top:200px;
+		right:-30px;	
 		width:auto;
 		border:1px solid #0B0B61;
-		font-size:4.5vw;
+		font-size:5vw;
 		font-weight: bold;
 		box-shadow:0px 0px 5px 0px gray;
 		border-radius:5px;
 		z-index:3;		
 		background:white;
 	}
+	.formularioLogin span{
+		font-size:5vw;
+	}
 	.formularioLogin input{
+		width:100%;
+		height:20px;
+		font-size:5vw;
 		font-weight: normal;
-		font-size:4.5vw;
 		border:1px solid #0B0B61;
 		border-radius:5px;
 	}
 	.formularioLogin input:focus{
+		font-size:5vw;
 		border-color: #0B0B61;
 	    box-shadow: 0 1px 1px rgba(14, 35, 144, 0.075)inset, 0 0 8px rgba(51, 228, 130,0.6);
 	    outline: 0 none;
 	}
 	.formularioLogin .btnLogin{
+		width:100%;
+		height:30px;
 		left:30px;
 		color:#0B0B61;
+		font-size:5vw;
 		font-weight: bold;
-		font-size:4.5vw;
 		border:1px solid #0B0B61;
 		border-radius:5px;
-		background: white;
-	}
-	
+	}	
 	/*====Menú de Navegación====*/
 	#menuNavegacion{
 		position:relative;
-		left:-10px;
-		top:155px;
-		width:50px;
+		visibility: hidden;
+		top:168px;
+		left:-10px;		
+		width:55px;
+		height:auto;
 	}	
 	.menuNavegacion li{
 		position:relative;
 		width:45px;
-		margin-bottom: 10px;
+		margin-bottom: 0px;
 		padding: 0px 5px;
 	}
 	.menuNavegacion img{
@@ -1032,11 +1058,116 @@ input, select, textarea{
 	.menuNavegacion .menu ul li{
 		padding: 7px 0px;
 	}
+	/*====Contenedor====*/
 	#contenedor{
-		top:155px;
-		left:50px;
-		font-size:3vw;
+		top:145px;
+		width:400px;
+		left:0px;
+		font-size:5vw;
 		/*El ancho y la altura se definen en la pagina principal dependiendo del screen*/
+	}
+	#reestablecerBD{	
+		visibility: hidden;	
+	}
+	#inputBuscar{
+		width:200px;
+		height:30px;
+		margin:3px;		
+	}
+	#btnBuscar{
+		position: relative;
+		top:2px;
+		height:40px;
+		font-size: 5vw;
+		background-color: #d4deee;
+	}
+	/*====Avisos Fijos====*/
+	#avisosFijos{
+		position:absolute;
+		width:auto;
+		padding:5px 10px;
+		border:1px solid black;
+		border-radius:10px;
+		text-align:center;
+		cursor:default;
+	}
+	.totalBienes{
+		visibility: hidden;
+	}
+	.totalBienes2{
+		visibility: visible;
+		top:50px;
+		left:0px;
+		padding:5px 10px;
+	}
+	.totalBienes2 img{
+		width:20px;
+		height:20px;
+	}
+	.tiempoCarga{
+		visibility: hidden;
+	}
+	.tiempoCarga2{
+		visibility: visible;
+		top:50px;
+		left:280px;
+		cursor:pointer !important;
+		padding:5px 10px;
+	}
+	.tiempoCarga2 img{
+		width:20px;
+		height:20px;
+	}
+	.regEncontrados{
+		display: none;
+	}
+	.regEncontrados2{
+		display:inline;
+		position:relative !important;	
+		margin:3px;	
+		padding:5px 10px;
+	}
+	.select{
+		position:relative !important;	
+		margin:3px;	
+	}
+	.select:focus{
+		border-color: #0B0B61;
+		box-shadow: 0 1px 1px rgba(14, 35, 144, 0.075)inset, 0 0 8px rgba(51, 63, 228,0.6);
+		outline: 0 none;
+	}
+	#avisoModificaciones{
+	visibility: hidden;
+	}
+	#avisoModificaciones2{
+		visibility: visible;
+		position:fixed;
+		top:150px;
+		right: 10px;
+		width:50px;  
+		padding:5px 5px;
+		margin: 0 auto;
+		text-align:center;
+		font-weight: bolder;
+		border-radius: 10px;
+	}
+	#avisoModificaciones2 img{
+		width:20px;
+		height:20px;
+	}
+	
+	#avisoDependencias{
+		position:absolute;
+		width:auto;
+		top:5px;
+		right:15px;	
+		padding:5px 10px;
+		margin: 0 auto;
+		color:#0B0B61;
+		border:1px solid #13198E;
+		border-radius:5px;
+		box-shadow:0px 0px 3px 0px #040A8E;	
+		background: white	;
 	}
 	.tablaBD td img{
 		height:10px;

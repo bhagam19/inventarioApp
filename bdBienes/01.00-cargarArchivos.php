@@ -34,6 +34,7 @@
 	//Cronómetro
 	$t=(microtime(true)-$ti1);
 	echo '<div id="avisosFijos" class="tiempoCarga" onclick="averiguarDimensionPantalla()">Tiempo de carga: '.number_format($t,3).' segundos.</div>';	
+	echo '<div id="avisosFijos" class="tiempoCarga2" onclick="averiguarDimensionPantalla()"><img src="../art/timer.png"/> '.number_format($t,3).' s.</div>';	
 //====== Aviso de Dependencias =========
 	$dependencias=array();
 	$dpd="";
@@ -69,8 +70,10 @@
 			$rows=mysqli_num_rows($consulta);
 			if($rows>=1){
 				echo '<div id="avisoModificaciones" class="avisoModifPend"><a title="Aviso de modificaciones" style="text-decoration:none" href="00-principal.php'.$queryUrl.'&cMod=1"> Hay '.$rows.' registros que requiere revisión. </a> </div>';
+				echo '<div id="avisoModificaciones2" class="avisoModifPend"><img src="../art/alerta.png"/><a style="text-decoration:none" href="00-principal.php'.$queryUrl.'&cMod=1"> '.$rows.' </a> </div>';
 			}else{
 				echo '<div id="avisoModificaciones" class="avisoSinModif">No hay modificaciones por revisar.</div>';
+				echo '<div id="avisoModificaciones2" class="avisoSinModif"><img src="../art/todoBien.png"/> 0</div>';
 			}																		
 		}	
 	}

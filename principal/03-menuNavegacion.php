@@ -78,10 +78,9 @@
 	if(!isset($_SESSION['usuario'])){
 		echo 
 			'
-				<div id="menuNavegacion"> 	
-					<ul>
-						<li><a href="../../index.php">Ir a Lista de Proyectos</a> </li>
-						<li><a href="?pg=$p01">Inventario de Bienes</a></li>
+				<div id="menuNavegacion" style="visibility:hidden" class="menuNavegacion" onmouseenter="mostrarMenu()" onmouseleave="ocultarMenu()"> 	
+					<ul class="menu">
+						<li class="li"><a id="listProy" href="../../index.php"><img src="../art/atras.svg"></a></li>
 					</ul>				
 				</div>
 			';
@@ -91,7 +90,7 @@
 		if($codigo==6){
 			echo 
 			'
-				<div id="menuNavegacion" class="menuNavegacion" onmouseenter="mostrarMenu()" onmouseleave="ocultarMenu()"> 
+				<div id="menuNavegacion" class="menuNavegacion" onmouseenter="mostrarMenu(1)" onmouseleave="ocultarMenu(1)"> 
 					<ul class="menu">						
 						<li class="li"><a id="listProy" href="../../index.php"><img src="../art/atras.svg"></a></li>
 						<li class="li"><a id="verBD" href="?pg=$pzz'.crypt($pzz,"$2y$10$".$salt).'"><img src="../art/bd.svg"></a></li>
@@ -119,7 +118,7 @@
 		if($codigo==1){
 			echo 
 			'
-				<div id="menuNavegacion" class="menuNavegacion" onmouseenter="mostrarMenu()" onmouseleave="ocultarMenu()"> 	
+				<div id="menuNavegacion" class="menuNavegacion" onmouseenter="mostrarMenu(1)" onmouseleave="ocultarMenu(1)"> 	
 					<ul class="menu" >
 						<li class="li"><a id="invBienes" href="?pg=$p01"><img style="width:15px;height:15px" src="../art/inventario.png"></a></li>
 						<li class="li"><a id="expExcel" href="?pg=$p23"><img style="width:15px;height:15px" src="../art/exportar.svg"></a></li>
@@ -127,6 +126,5 @@
 				</div>
 			';
 		}			
-	}		
-
+	}
 ?>

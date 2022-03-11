@@ -38,6 +38,7 @@
 	//calculo el total de páginas 
 	$total_paginas = ceil($num_total_registros / $tp); 	
 	echo "<div id='avisosFijos' class='totalBienes'>TOTAL BIENES: ".$rowCant["total"]."</div>";  
+	echo "<div id='avisosFijos' class='totalBienes2'><img src='../art/stock.png'/> ".$rowCant["total"]." bienes. </div>";  
   if(isset($_SESSION['usuario'])){
     $codigo=$_SESSION['permiso'];
     if($codigo==6){ 
@@ -55,10 +56,15 @@
           </form>
         </div><br>
       ';
-    }
+    }else{
+		echo'
+		<br><br>
+      ';
+	}
   }
 	//pongo el número de registros total, el tamaño de página y la página que se muestra 
-	echo "<span id='avisosFijos' class='regEncontrados'>" .$num_total_registros." </span> registros encontrados. "; 
+	echo "<span id='avisosFijos' class='regEncontrados'>".$num_total_registros."</span><span class='regEncontrados'>registros encontrados.</span>"; 
+	echo "<span id='avisosFijos' class='regEncontrados2'>".$num_total_registros."</span><span class='regEncontrados2'>registros.</span>"; 
 	echo'
 			Mostrar <select id="avisosFijos" class="select" onchange=location.href=\'00-principal.php'.$queryUrl.'&tp=\'+this.value>';					
 					if($tp){
@@ -71,6 +77,6 @@
 					<option value=100>100</option>
 					<option value=200>200</option>
 					<option value=500>500</option>
-				</select> registros por página. <br>
+				</select>registros<span class="regEncontrados">por página.</span><br>
 	';
 ?>

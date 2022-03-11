@@ -5,7 +5,7 @@
 	if(!isset($_SESSION['usuario'])){
 		echo '<div class="btnMenu"><img title ="Menú" src="../art/menu.svg" onclick="alert(\'Inicia sesión para activar el menú.\')"></div>';
 	}else{
-		echo '<div class="btnMenu"><img title ="Menú" src="../art/menu.svg"></div>';
+		echo '<div class="btnMenu"><img title ="Menú" src="../art/menu.svg" onclick="mostrarMenu(0)"></div>';
 	}
 ?>
 	<div class="logo">

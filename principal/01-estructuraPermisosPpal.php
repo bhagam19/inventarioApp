@@ -36,16 +36,11 @@
 					</div>
 				';
 		}
-	}else{//Usuario visitante (No tiene bienes a cargos, no administra)
-	
+	}else{//Usuario visitante (No tiene bienes a cargos, no administra)	
 		include('02-encabezadoGral.php');
-
 		include('../login/00-formularioLogin.php');
-
 		//include('../login/formularioNuevoUsuario.php');
-
-		include('03-menuNavegacion.php');
-		
+		include('03-menuNavegacion.php');		
 		echo
 			'
 				<div id="contenedor">

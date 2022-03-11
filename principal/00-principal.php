@@ -10,7 +10,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset='UTF-8'" />
 		<!--<meta http-equiv="refresh" content="10">-->
 
-  		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=0.6, maximun-scale=1.0, minimun-scale=0.2"/>﻿ 
+  		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximun-scale=1.0, minimun-scale=0.2"/>﻿ 
 		<title>Inventario IEE</title>
 		
 		<link rel="stylesheet" media="screen" type="text/css" href="00-principal.css"/>
@@ -43,7 +43,7 @@
 				//alert("La resolución de tu pantalla es: " + screen.width + " x " + screen.height);				
 				document.getElementById("contenedor").style.width = (screen.width*0.97)+ "px";
 				document.getElementById("contenedor").style.height = (screen.height*0.70) + "px";
-				document.getElementById("menuNavegacion").style.height = (screen.height*0.715) + "px";
+				//document.getElementById("menuNavegacion").style.height = (screen.height*0.715) + "px";
 				if(screen.width<800){
 					document.getElementById("contenedor").style.width = (screen.width*1.6)+ "px";
 					document.getElementById("contenedor").style.height = (screen.height*1.2) + "px";

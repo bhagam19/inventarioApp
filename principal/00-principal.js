@@ -30,7 +30,14 @@ function mostrarCambiarContrasena(){
 	    $('.formularioNuevaContrasena').css('visibility', 'visible');
 	  }
 }
-function mostrarMenu(){
+function mostrarMenu(s){
+	if(s==0){
+		if( $('.menuNavegacion').css('visibility') !== 'hidden' ){
+			$('.menuNavegacion').css('visibility', 'hidden');	    
+		}else{
+			$('.menuNavegacion').css('visibility', 'visible');	    
+		}
+	}	
 	$('.menuNavegacion').css({"border-right":"1px solid gray"});
 	if(screen.width<800){
 		//alert(screen.width);
