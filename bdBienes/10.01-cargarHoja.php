@@ -28,7 +28,7 @@ $pgActa=1;
 include('10.02-cargarEncabezadoHoja.php');
 	echo'
 			<div id="identificacion">
-				<h4 style="text-align:center;">ACTA DE ENTREGA DE INVENTARIO // '.$responsable.' - Página '.$pgActa.'</h4>	
+				<h4 style="text-align:center;">ACTA DE ENTREGA DE INVENTARIO - '.$responsable.' - Página '.$pgActa.'</h4>	
 				<h4 style="font-weight:normal;text-align:left;">Entrerríos, '.fechaCastellano($miFecha).'</h4>
 				<h4 style="font-weight:normal;text-align:justify">El Rector de la IE Entrerríos hace entrega del siguiente inventario al docente <span style="font-weight:bold">'.$responsable.'</span>, identificado con CC. '.@number_format($CED).'.</h4>
 			</div>
@@ -39,8 +39,8 @@ include('10.02-cargarEncabezadoHoja.php');
 					<thead>
 						<tr id="encabezadoTabla">
 							<th style="width:130px">BIENES ASIGNADOS</th>
-							<th style="width:230px">DETALLE</th>
-							<th style="width:200px">DEPENDENCIA</th>
+							<th style="width:300px">DETALLE</th>
+							<th style="width:250px">DEPENDENCIA</th>
 							<th>CANT</th>
 							<th>ESTADO</th>
 						</tr>						
@@ -48,9 +48,8 @@ include('10.02-cargarEncabezadoHoja.php');
 					<tbody>	';
 
 						if($usuarioID){
-							$sql=mysqli_query($conexion,"SELECT nomBien,detalleDelBien,codDependencias,cantBien,codEstado,codAlmacenamiento FROM bienes WHERE usuarioID=".$usuarioID." ORDER BY nomBien ASC");
+							$sql=mysqli_query($conexion,"SELECT nomBien,detalleDelBien,codDependencias,cantBien,codEstado,codAlmacenamiento FROM bienes WHERE usuarioID=".$usuarioID." ORDER BY codDependencias ASC, nomBien ASC");
 							while($f=mysqli_fetch_assoc($sql)){
-
 								$sql1=mysqli_query($conexion,"SELECT codUbicacion,nomDependencias FROM dependencias WHERE codDependencias=".$f['codDependencias']);
 								while($f1=mysqli_fetch_assoc($sql1)){
 									$nomDependencias=$f1['nomDependencias'];
@@ -66,8 +65,7 @@ include('10.02-cargarEncabezadoHoja.php');
 								$sql1=mysqli_query($conexion,"SELECT nomAlmacenamiento FROM almacenamiento WHERE codAlmacenamiento=".$f['codAlmacenamiento']);
 								while($f1=mysqli_fetch_assoc($sql1)){
 									$nomAlmacenamiento=$f1['nomAlmacenamiento'];									
-								}					
-
+								}
 								if($f['codEstado']!=4){
 									echo'
 										<tr style="font-size:11px;height:25px">
@@ -77,51 +75,39 @@ include('10.02-cargarEncabezadoHoja.php');
 											<td style="text-align:center">'.$f['cantBien'].'</td>
 											<td>'.$nomEstado.'</td>
 										</tr>';
-
 									$pg1=27;
 									$pgS=31;
-
 									$cont1++;
 									if($cont1>$pg1){
 										$cont2++;
 									}
-
 									// echo 'cont1: '.$cont1.' || ';
-									// echo 'cont2: '.$cont2.'<br>';
-		
+									// echo 'cont2: '.$cont2.'<br>';		
 									if(($cont1==$pg1||$cont1==$pg1+1)||($cont2>1&&$cont2%$pgS==0)){
 										$cont1=$cont1+2;
 										$pgActa++;
 										echo'
 													</tbody>
 												</table>
-
 												<br><span style="font-weight:bold;right:0px">CONTINÚA A PÁGINA '.$pgActa.'  ===> </span><br>';
-
 										// echo 'pag: '.$pgActa.'<br>';
 										// echo 'cont1: '.$cont1.'<br>';
 										// echo 'cont2: '.$cont2.'<br>';
 										// echo 'mod: '.$cont2%7;
-
 										echo'
 											</div>';
-
 										include('10.03-cargarPieHoja.php');
-
-										echo'<hr id="breakline">';
-										
+										echo'<hr id="breakline">';										
 										include('10.02-cargarEncabezadoHoja.php');
-
 										echo'
-											<h4 id="tituloPagina" style="text-align:center;">ACTA DE ENTREGA DE INVENTARIO // '.$responsable.' - Página '.$pgActa.'</h4>
-
+											<h4 id="tituloPagina" style="text-align:center;">ACTA DE ENTREGA DE INVENTARIO - '.$responsable.' - Página '.$pgActa.'</h4>
 											<div id="tabla2">	
 												<table border="1" style="border-collapse:collapse">	
 													<thead>
 														<tr id="encabezadoTabla">
-															<th style="width:120px">BIENES ASIGNADOS</th>
+															<th style="width:130px">BIENES ASIGNADOS</th>
 															<th style="width:300px">DETALLE</th>
-															<th style="width:120px">DEPENDENCIA</th>
+															<th style="width:250px">DEPENDENCIA</th>
 															<th>CANT</th>
 															<th>ESTADO</th>
 														</tr>						
