@@ -25,3 +25,9 @@ Tareas pendientes:
 - Incluir lista de sugerencias para el ingreso de nuevos bienes (Con javascript y ajax)
 - Revisar la aprobación y rechazo de los detalles del bien, y enviar observacion (Que aparezca ventana para enviar observación)
 - Organizar el importador de archivo en excel "Inventario.xsls" (que se pueda seleccionar el archivo a cargar.)
+
+
+Notas:
+Para instalar el lector de excel phpspreadsheet, ver los siguientes videos:
+- Cómo instalar Composer en Windows 10 para PHP https://www.youtube.com/watch?v=NGvfsCOVzwo&t=0s
+- Crear archivo de Excel con PHP desde cero https://www.youtube.com/watch?v=hWChLMQ5iFc&t=0s

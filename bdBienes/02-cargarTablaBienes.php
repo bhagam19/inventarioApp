@@ -40,14 +40,14 @@
 					}  
 				}
 				//identificamos la categoria
-				$sql02=mysqli_query($conexion,"SELECT * FROM clasesDeBienes WHERE codClase=".$fila1["codCategoria"]);
+				$sql02=mysqli_query($conexion,"SELECT * FROM categoriasDeBienes WHERE codCategoria=".$fila1["codCategoria"]);
 				while($fila2=mysqli_fetch_array($sql02)){
-					$nomClase=$fila2["nomClase"];
+					$nomCategoria=$fila2["nomCategoria"];
 					//identificamos la clase
-					/*$sql03=mysqli_query($conexion,"SELECT * FROM clasesDeBienes WHERE codClase=".$fila2["codClase"]);
+					/*$sql03=mysqli_query($conexion,"SELECT * FROM categoriasDeBienes WHERE codCategoria=".$fila2["codCategoria"]);
 					while($fila3=mysqli_fetch_array($sql03)){
 						//guardamos el nombre de la clase
-						$nomClase=$fila3["nomClase"];
+						$nomCategoria=$fila3["nomCategoria"];
 					}*/
 				}
 				//identificamos la dependencia

@@ -30,7 +30,7 @@ include('10.02-cargarEncabezadoHoja.php');
 			<div id="identificacion">
 				<h4 style="text-align:center;">ACTA DE ENTREGA DE INVENTARIO - '.$responsable.' - Página '.$pgActa.'</h4>	
 				<h4 style="font-weight:normal;text-align:left;">Entrerríos, '.fechaCastellano($miFecha).'</h4>
-				<h4 style="font-weight:normal;text-align:justify">El Rector de la IE Entrerríos hace entrega del siguiente inventario al docente <span style="font-weight:bold">'.$responsable.'</span>, identificado con CC. '.@number_format($CED).'.</h4>
+				<h4 style="font-weight:normal;text-align:justify">El Rector de la IE Entrerríos hace entrega del siguiente inventario al docente <span style="font-weight:bold">'.$responsable.'</span>, identificado con CC. '.@number_format(intval($CED)).'.</h4>
 			</div>
 
 			<div id="tabla2">	
@@ -152,7 +152,7 @@ include('10.02-cargarEncabezadoHoja.php');
 										<tr style="">
 											<td></td>
 											<td>Cargo: </td>
-											<td> Docente &nbsp &nbsp &nbsp &nbsp CC. '.@number_format($CED).'</td>
+											<td> Docente &nbsp &nbsp &nbsp &nbsp CC. '.@number_format(intval($CED)).'</td>
 										</tr>
 									</table>
 								<div>

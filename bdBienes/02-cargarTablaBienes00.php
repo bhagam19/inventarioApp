@@ -61,20 +61,20 @@ if($mod[10]==1){//==== Aquí hay MODIFICACIONES PENDIENTES
 //========================TIPO INVENTARIO (SELECT)======================
 	if($mod[8]==1){//Aquí se alerta una modificación.
 
-		$sql=mysqli_query($conexion,"SELECT nomClase from clasesDeBienes WHERE codClase=".$vlrOr[8]);
+		$sql=mysqli_query($conexion,"SELECT nomCategoria from categoriasDeBienes WHERE codCategoria=".$vlrOr[8]);
 		while($f=mysqli_fetch_array($sql)){
-			$tipoOriginal=$f['nomClase'];
+			$tipoOriginal=$f['nomCategoria'];
 		}
 
-		$sql=mysqli_query($conexion,"SELECT nomClase from clasesDeBienes WHERE codClase=".$vlr[8]);
+		$sql=mysqli_query($conexion,"SELECT nomCategoria from categoriasDeBienes WHERE codCategoria=".$vlr[8]);
 		while($f=mysqli_fetch_array($sql)){
-			$nomClase=$f['nomClase'];
+			$nomCategoria=$f['nomCategoria'];
 		}
 
 		$salida.= 
-		'	<td id="tdTipoInventario'.$fila1["codBien"].'" style="background:#D2F6B3; border: 2px solid gray" title="Valor original: '.$tipoOriginal.'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador."><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/> '.$nomClase.'</td>';
+		'	<td id="tdTipoInventario'.$fila1["codBien"].'" style="background:#D2F6B3; border: 2px solid gray" title="Valor original: '.$tipoOriginal.'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador."><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/> '.$nomCategoria.'</td>';
 	}else{
-		$salida.= '<td id="tdTipoInventario'.$fila1["codBien"].'" title="Inicie sesión para para modificar.">'.@$nomClase.'</td>';		
+		$salida.= '<td id="tdTipoInventario'.$fila1["codBien"].'" title="Inicie sesión para para modificar.">'.@$nomCategoria.'</td>';		
 	}
 
 //========================DEPENDENCIA (SELECT)======================

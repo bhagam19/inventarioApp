@@ -58,22 +58,22 @@ function insertar(){
 			VALUES (1,1)';
 			insertar();		
 
-//########## CREAR UNA TABLA DE "CLASES DE BIENES" ##########
+//########## CREAR UNA TABLA DE "CATEGORÍAS DE BIENES" ##########
 	// Preparamos la consulta SQL
-	$tabla = 'clasesDeBienes';
+	$tabla = 'categoriasDeBienes';
 	$sql=
 		'
 			CREATE TABLE '.$tabla.'(
-				codClase int(2) NOT NULL,
-				PRIMARY KEY(codClase),
-				nomClase varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL 	
+				codCategoria int(2) NOT NULL AUTO_INCREMENT,
+				PRIMARY KEY(codCategoria),
+				nomCategoria varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL 	
 			)
 		';
 	//Ejecutar
 	ejecutarConsulta();
 
-//########## INGRESAR CONTENIDO A LA TABLA "CLASES DE BIENES" ##########
-	$clases = array(
+//########## INGRESAR CONTENIDO A LA TABLA "CATEGORÍAS DE BIENES" ##########
+	$categorias = array(
 		array(1,"Muebles"),
 		array(2,"Equipos y Material de Laboratorio"),
 		array(3,"Material Didáctico"),
@@ -99,48 +99,17 @@ function insertar(){
 		array(23,"Implementos de Recreación y Deportes"),
 		array(24,"Utensilios de Cocina"),
 		array(25,"Edificaciones"),
-		);
-	
-	foreach ($clases as $clase){
-		$sql='INSERT INTO '.$tabla.' (codClase, nomClase) 
-			VALUES ('.$clase[0].',"'.$clase[1].'")';
-			insertar();		
-	}
-	
-//########## CREAR UNA TABLA DE "CATEGORÍAS DE BIENES" ##########
-	// Preparamos la consulta SQL
-	$tabla = 'categoriasDeBienes';
-	$sql=
-		'
-			CREATE TABLE '.$tabla.'(
-				codCategoria int NOT NULL AUTO_INCREMENT,
-				nomCategoria varchar(40) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-				codClase int,
-				PRIMARY KEY(codCategoria),				
-				FOREIGN KEY(codClase) REFERENCES clasesDeBienes (codClase)
-			)
-		';
-	//Ejecutar
-	ejecutarConsulta();
-
-//########## INGRESAR CONTENIDO A LA TABLA "CATEGORÍAS DE BIENES" ##########
-	
-	$categorias = array(
-		array("Silla",1),
-		array("Mesa",1),
-		array("Escritorio",1),
-		array("Portátil",5),
-		array("Computador de Escritorio",5),
-		array("Smart TV",6),
-		array("Video Beam", 6)
+		array(26,"Herramientas y Materiales"),
+		array(27,"Reporte de Necesidad"),
+		array(28,"Reporte para Mantenimiento")
 		);
 	
 	foreach ($categorias as $categoria){
-		$sql='INSERT INTO '.$tabla.' (nomCategoria, codClase) 
-			VALUES ("'.$categoria[0].'",'.$categoria[1].')';
+		$sql='INSERT INTO '.$tabla.' (codCategoria, nomCategoria) 
+			VALUES ('.$categoria[0].',"'.$categoria[1].'")';
 			insertar();		
-	}	
-	
+	}
+
 //########## CREAR UNA TABLA DE "UBICACIONES" ##########
 	// Preparamos la consulta SQL
 	$tabla = 'ubicaciones';
@@ -232,8 +201,8 @@ function insertar(){
 	
 //################### CONTENIDO DE PRUEBA PARA LA TABLA "DEPENDENCIAS". ###################
 	$dependencias = array(//(nomDependencias, codUbicacion, usuarioID)
-		array("AULA B2 C-102 (Secretaría)",2,40),		
-		array("AULA B2 C-202 (Rectoría)",2,36)		
+		array("AULA B2 C-102 (Secretaría)",2,1),		
+		array("AULA B2 C-202 (Rectoría)",2,2)		
 		);
 	
 	foreach ($dependencias as $dependencia){
@@ -258,7 +227,7 @@ function insertar(){
 	
 //################### CONTENIDO DE PRUEBA PARA LA TABLA "ESTADO ALMACENAMIENTO". ###################
 	
-	$almacenamientos = array("EN USO","ALMACENADO");
+	$almacenamientos = array("En Uso","Almacenado");
 	
 	foreach ($almacenamientos as $almacenamiento){
 		$sql='INSERT INTO '.$tabla.' (nomAlmacenamiento) 
@@ -282,7 +251,7 @@ function insertar(){
 	
 //################### CONTENIDO DE PRUEBA PARA LA TABLA "ESTADO DEL BIEN". ###################
 	
-	$estados = array("NUEVO","BUENO","REGULAR","MALO");
+	$estados = array("Nuevo","Bueno","Regular","Malo");
 	
 	foreach ($estados as $estado){
 		$sql='INSERT INTO '.$tabla.' (nomEstado) 
@@ -306,7 +275,7 @@ function insertar(){
 	
 //################### CONTENIDO DE PRUEBA PARA LA TABLA "MANTENIMIENTO". ###################
 	
-	$mantenimientos = array("AL DÍA","EN MORA","DADO DE BAJA");
+	$mantenimientos = array("Al Día","En Mora","Dado de Baja");
 	
 	foreach ($mantenimientos as $mantenimiento){
 		$sql='INSERT INTO '.$tabla.' (nomMantenimiento) 

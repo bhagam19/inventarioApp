@@ -9,7 +9,6 @@
 	$pzz='../02-mostrarTablasenBD.php';
 	$p01='../bdBienes/01-verBienes.php';
 	$p02='../bdAlmacenamiento/01-bdAlmacenamiento.php';
-	$p03='../bdClasesBienes/01-bdClasesBienes.php';
 	$p04='../bdCategorias/01-bdCategoriasBienes.php';
 	$p05='../bdDependencias/01-bdDependencias.php';
 	$p06='../bdEstadodelBien/01-bdEstadodelBien.php';
@@ -99,7 +98,6 @@
 							
 							<ul class="submenuAdmon">
 								<li class="li"><a href="?pg=$p02'.crypt($p02,"$2y$10$".$salt).'">Almacenamiento</a></li>
-								<li class="li"><a href="?pg=$p03'.crypt($p03,"$2y$10$".$salt).'">Clases de Bienes</a></li>
 								<li class="li"><a href="?pg=$p04'.crypt($p04,"$2y$10$".$salt).'">Categorías de Bienes</a></li>
 								<li class="li"><a href="?pg=$p05'.crypt($p05,"$2y$10$".$salt).'">Dependencias</a></li>
 								<li class="li"><a href="?pg=$p06'.crypt($p06,"$2y$10$".$salt).'">Estado del Bien</a></li>

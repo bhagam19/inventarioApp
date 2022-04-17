@@ -79,20 +79,20 @@ if($mod[7]==1){ //Aquí se alerta una modificación.
 //========================TIPO INVENTARIO (SELECT)======================
 	if($mod[8]==1){//Aquí se alerta una modificación.
 
-		$sql=mysqli_query($conexion,"SELECT nomClase from clasesDeBienes WHERE codClase=".$vlrOr[8]);
+		$sql=mysqli_query($conexion,"SELECT nomCategoria from categoriasDeBienes WHERE codCategoria=".$vlrOr[8]);
 			while($f=mysqli_fetch_array($sql)){
-				$tipoOriginal=$f['nomClase'];
+				$tipoOriginal=$f['nomCategoria'];
 			}
 
-			$sql=mysqli_query($conexion,"SELECT nomClase from clasesDeBienes WHERE codClase=".$vlr[8]);
+			$sql=mysqli_query($conexion,"SELECT nomCategoria from categoriasDeBienes WHERE codCategoria=".$vlr[8]);
 			while($f=mysqli_fetch_array($sql)){
-				$nomClase=$f['nomClase'];
+				$nomCategoria=$f['nomCategoria'];
 			}
 
 		$salida.= 
-		'	<td id="tdTipoInventario'.$fila1["codBien"].'" style="background:#D2F6B3; border: 2px solid gray" title="Valor original: '.$tipoOriginal.'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador." ondblclick="actualizarSeleccionBien(this.id,'.$fila1["codBien"].',\'codClase\',\'categoriaAct'.$fila1["codBien"].'\','.$fila1['codCategoria'].',\'clasesDeBienes\',\'nomClase\',\''.$queryUrl.'\',\'145px\')"><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/> '.$nomClase.'</td>';
+		'	<td id="tdTipoInventario'.$fila1["codBien"].'" style="background:#D2F6B3; border: 2px solid gray" title="Valor original: '.$tipoOriginal.'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador." ondblclick="actualizarSeleccionBien(this.id,'.$fila1["codBien"].',\'codCategoria\',\'categoriaAct'.$fila1["codBien"].'\','.$fila1['codCategoria'].',\'categoriasDeBienes\',\'nomCategoria\',\''.$queryUrl.'\',\'145px\')"><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/> '.$nomCategoria.'</td>';
 	}else{
-		$salida.= '<td id="tdTipoInventario'.$fila1["codBien"].'"><img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarSeleccionBien(this.parentNode.id,'.$fila1["codBien"].',\'codClase\',\'categoriaAct'.$fila1["codBien"].'\','.$fila1['codCategoria'].',\'clasesDeBienes\',\'nomClase\',\''.$queryUrl.'\',\'145px\')">'.$nomClase.'</td>';		
+		$salida.= '<td id="tdTipoInventario'.$fila1["codBien"].'"><img style="width:10x;height:10x" title="Click para modificar" src="../art/editar.png" onclick="actualizarSeleccionBien(this.parentNode.id,'.$fila1["codBien"].',\'codCategoria\',\'categoriaAct'.$fila1["codBien"].'\','.$fila1['codCategoria'].',\'categoriasDeBienes\',\'nomCategoria\',\''.$queryUrl.'\',\'145px\')">'.$nomCategoria.'</td>';		
 	}
 
 //========================DEPENDENCIA (SELECT)======================

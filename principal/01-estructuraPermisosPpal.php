@@ -45,7 +45,7 @@
 			'
 				<div id="contenedor">
 			';
-					include($pagina); 
+					include($pagina);
 		echo 
 			'
 				</div>

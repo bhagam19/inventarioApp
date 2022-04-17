@@ -59,7 +59,7 @@
 				//$paginaLogs="../principal/principal";//para escribir los Logs
 				//$linkLogs="Principal";//para escribir los Logs
 				//include('../bdLogs/01-bdEscribirLogs.php');
-				include('01-estructuraPermisosPpal.php');        
+				include('01-estructuraPermisosPpal.php');
 			?>
 		</div>
 

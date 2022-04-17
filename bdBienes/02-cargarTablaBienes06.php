@@ -72,17 +72,17 @@ if($mod[2]==1){ //Aquí se alerta una modificación.
 	}
 //========================TIPO INVENTARIO (SELECT)======================
 	if($mod[8]==1){//Aquí se alerta una modificación.
-		$sql=mysqli_query($conexion,"SELECT nomClase from clasesDeBienes WHERE codClase=".$vlrOr[8]);
+		$sql=mysqli_query($conexion,"SELECT nomCategoria from categoriasDeBienes WHERE codCategoria=".$vlrOr[8]);
 			while($f=mysqli_fetch_array($sql)){
-				$tipoOriginal=$f['nomClase'];
+				$tipoOriginal=$f['nomCategoria'];
 			}
-			$sql=mysqli_query($conexion,"SELECT nomClase from clasesDeBienes WHERE codClase=".$vlr[8]);
+			$sql=mysqli_query($conexion,"SELECT nomCategoria from categoriasDeBienes WHERE codCategoria=".$vlr[8]);
 			while($f=mysqli_fetch_array($sql)){
-				$nomClase=$f['nomClase'];
+				$nomCategoria=$f['nomCategoria'];
 			}
-		$salida.='<td id="tdTipoInventario'.$fila1["codBien"].'" style="background:#D2F6B3; border: 2px solid gray" title="Valor original: '.$tipoOriginal.'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador."><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/ok.svg"/ title="Aprobar" onClick="confirmarAccion(1,'.$fila1["codBien"].',\''.$vlr[8].'\',\'codCategoria\',\''.$queryUrl."&md=1".'\')"><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/cancelar.svg" title="Rechazar" onClick="confirmarAccion(0,'.$fila1["codBien"].',\''.$fila1["codCategoria"].'\',\'codCategoria\',\''.$queryUrl."&md=2".'\')"> '.$nomClase.'</td>';
+		$salida.='<td id="tdTipoInventario'.$fila1["codBien"].'" style="background:#D2F6B3; border: 2px solid gray" title="Valor original: '.$tipoOriginal.'.&#13;&#13;Este cambio está pendiente de ser verificado y aprobado por el administrador."><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/modificar.svg"/><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/ok.svg"/ title="Aprobar" onClick="confirmarAccion(1,'.$fila1["codBien"].',\''.$vlr[8].'\',\'codCategoria\',\''.$queryUrl."&md=1".'\')"><img onMouseOver="this.style.background=\'none\'; this.style.borderRadius=\'0px\'" style="width:10px; height:10px" src="../art/cancelar.svg" title="Rechazar" onClick="confirmarAccion(0,'.$fila1["codBien"].',\''.$fila1["codCategoria"].'\',\'codCategoria\',\''.$queryUrl."&md=2".'\')"> '.$nomCategoria.'</td>';
 	}else{
-		$salida.='<td id="tdTipoInventario'.$fila1["codBien"].'" title="Click para modificar." ondblclick="actualizarSeleccionBien(this.id,'.$fila1["codBien"].',\'codClase\',\'categoriaAct'.$fila1["codBien"].'\','.$fila1['codCategoria'].',\'clasesDeBienes\',\'nomClase\',\''.$queryUrl.'\',\'145px\')">'.@$nomClase.'</td>';		
+		$salida.='<td id="tdTipoInventario'.$fila1["codBien"].'" title="Click para modificar." ondblclick="actualizarSeleccionBien(this.id,'.$fila1["codBien"].',\'codCategoria\',\'categoriaAct'.$fila1["codBien"].'\','.$fila1['codCategoria'].',\'categoriasDeBienes\',\'nomCategoria\',\''.$queryUrl.'\',\'145px\')">'.@$nomCategoria.'</td>';		
 	}
 //========================DEPENDENCIA (SELECT)======================
 	if($mod[9]==1){//Aquí se alerta una modificación.
@@ -99,7 +99,7 @@ if($mod[2]==1){ //Aquí se alerta una modificación.
 		$salida.= '<td id="tdDependencia'.$fila1["codBien"].'" title="Click para modificar." ondblclick="actualizarSeleccionBien(this.id,'.$fila1["codBien"].',\'codDependencias\',\'dependenciaAct'.$fila1["codBien"].'\','.$fila1['codDependencias'].',\'dependencias\',\'nomDependencias\',\''.$queryUrl.'\',\'145px\')">'.@$nomDependencia.'</td>';		
 	}
 	$codigo=$_SESSION['permiso'];
-	if($codigo==6){	
+	if($codigo==6){			
 		$salida.='			
 			<td>'.$nomResponsable.'</td>									
 			<td style="text-align:right;padding:0px 10px">CC. '.$usuarioCED.'</td>

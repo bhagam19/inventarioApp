@@ -26,9 +26,7 @@ function actualizarSeleccionBien(tdId,numReg,campo1,selId,value,tabla,campo2,q,c
 	texto=td.innerHTML.substring(inicio+1,td.innerHTML.length);
 	/*
 	img1=td.innerHTML.substring(0,4);
-	img2='<img';	
-	
-
+	img2='<img';
 	if(campo1=="codEstado"){
 		if(img1==img2){ //Se revisa que el contenido de la celda no inicie con una imagen.
 			inicio=td.innerHTML.indexOf(">");
@@ -220,7 +218,7 @@ function actualizarRegistroBien(id,valor,campo,q){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("GET", "../bdBienes/04-actualizarBien.php"+q+"&id="+id+"&valor="+valor+"&campo="+campo, false);
 	xmlhttp.send();
-	// alert(xmlhttp.responseText.trim());
+	//alert(xmlhttp.responseText.trim());
 	var n = q.search("uP");
 	n = parseInt(q.substring(n+3,n+4));
 	if(n===6){

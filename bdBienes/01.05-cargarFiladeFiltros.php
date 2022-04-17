@@ -154,10 +154,10 @@
 								width:150px"  onchange="aplicarFiltros(\''.$queryUrl.'\',\'f3\',this.value)">';
 																
 								if($f3){
-									//Cambio el "codClase" por el "nomClase"
-									$consulta=mysqli_query($conexion,"SELECT * FROM clasesDeBienes WHERE codClase=".$f3);
+									//Cambio el "codCategoria" por el "nomCategoria"
+									$consulta=mysqli_query($conexion,"SELECT * FROM categoriasDeBienes WHERE codCategoria=".$f3);
 									while($f=mysqli_fetch_array($consulta)){
-										$c = $f['nomClase'];
+										$c = $f['nomCategoria'];
 									}
 									$salida.= '<option>'.$c.'</option>';
 									$salida.= '<option value="por Tipo Inventario..." style="background:white">Quitar filtro</option>';
@@ -175,14 +175,14 @@
 										$consulta=mysqli_query($conexion,"SELECT DISTINCT codCategoria FROM bienes ".$cr." ORDER BY codCategoria ASC");
 									}
 								}
-								$clases=array();										
+								$categorias=array();										
 								while($fila1=mysqli_fetch_array($consulta)){
-									$consulta2=mysqli_query($conexion,"SELECT * FROM clasesDeBienes WHERE codClase=".$fila1["codCategoria"]);
-									while($clase=mysqli_fetch_assoc($consulta2)){
-									$clases[$clase["codClase"]] = $clase["nomClase"];
+									$consulta2=mysqli_query($conexion,"SELECT * FROM categoriasDeBienes WHERE codCategoria=".$fila1["codCategoria"]);
+									while($categoria=mysqli_fetch_assoc($consulta2)){
+									$categorias[$categoria["codCategoria"]] = $categoria["nomCategoria"];
 									}
 								}	    
-								$c2=array_unique($clases);
+								$c2=array_unique($categorias);
 								asort($c2);
 								foreach($c2 as $idd =>$c){ 
 										if($idd!=$f3){

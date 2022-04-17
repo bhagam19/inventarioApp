@@ -16,9 +16,8 @@
 	$campo1=$_REQUEST['campo1'];
 	$campo2=$_REQUEST['campo2'];
 	$respuesta="";
-
 	include('../conexion/datosConexion.php');
-	if($tabla=="clasesDeBienes"){
+	if($tabla=="categoriasDeBienes"){
 		$consulta=mysqli_query($conexion,"SELECT * FROM ".$tabla." ORDER BY ".$campo2);
 			$registros=array();
 			while($registro=mysqli_fetch_assoc($consulta)){
@@ -32,7 +31,6 @@
 				}
 			}
 	}else{
-
 		$consulta=mysqli_query($conexion,"SELECT * FROM ".$tabla." ORDER BY ".$campo1);
 		$registros=array();
 		while($registro=mysqli_fetch_assoc($consulta)){
@@ -46,7 +44,6 @@
 			}
 		}
 	}
-
 	/*	if($tabla=="estadoDelBien"){
 	}else if($tabla=="usuarios"){
 		$consulta=mysqli_query($conexion,"SELECT * FROM ".$tabla." ORDER BY ".$campo2);
@@ -62,8 +59,6 @@
 			}
 		}
 	}*/
-
 	echo $respuesta;
-
 	mysqli_close($conexion);
 ?>
