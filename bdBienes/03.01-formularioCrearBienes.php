@@ -66,7 +66,7 @@
 						<td><select tabindex="9" id="selTipoInv" onchange="cambiarFondoInput(this.id)"> 
 								<option value="">Seleccione...</option>
 							';
-									$sql=mysqli_query($conexion,"SELECT * FROM clasesDeBienes");
+									$sql=mysqli_query($conexion,"SELECT * FROM categoriasDeBienes");
 									while($f=mysqli_fetch_array($sql)){
 										echo'<option value='.$f['codClase'].'>'.$f['nomClase'].'</option>';
 									}									    
