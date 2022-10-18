@@ -262,9 +262,7 @@ $(document).ready(function(){ //ocultar formularios
 		});
 	});
 });//ocultar formularios
-$(document).ready(function() {//mover formulario Mis Reservaciones
-	$("#formulario").draggable({stack:"#formulario"}, {handle:"#handler"});
-});//mover formulario Mis Reservaciones
+
 function mostrarFormularios(clase){ //mostrar formularios	
 	$('#separador').fadeIn('fast',function(){
 		$(clase).animate({'top':'35%','margin-top':'-150px'},500);

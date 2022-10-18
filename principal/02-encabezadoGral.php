@@ -1,7 +1,5 @@
 <div id="encabezadoGral">
-
 <?php
-
 	if(!isset($_SESSION['usuario'])){
 		echo '<div class="btnMenu"><img title ="Menú" src="../art/menu.svg" onclick="alert(\'Inicia sesión para activar el menú.\')"></div>';
 	}else{

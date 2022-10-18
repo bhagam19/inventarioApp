@@ -14,7 +14,6 @@
     echo "Entra aquí";
 -->
 <?php
-    error_reporting(-1);
 	//### 1. Realizamos la conexion al servidor y a la base de datos a traves del archivo 'datosConexion.php'	
     include('conexion/datosConexion.php');    
     //Verificamos si existe la tabla "instalacion" y el campo "confirmacion" con valor "1"  

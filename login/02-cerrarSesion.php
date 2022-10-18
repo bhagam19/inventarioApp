@@ -1,7 +1,6 @@
 <?php
 session_name("inventarioIEE");
 session_start();
-
 if(!isset($_SESSION['usuario'])){
 	echo 
 		"<html>

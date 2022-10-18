@@ -30,5 +30,5 @@ while($fila=mysqli_fetch_array($sql)){
 }
 	//echo $respuesta;
 	//Cerrar Conexion
-	mysqli_close($conexion);	
+	//mysqli_close($conexion);	
 ?>
