@@ -1,5 +1,5 @@
 <?php
-	error_reporting(0);
+	error_reporting(-1);
 	$directorio = '../bdBienes/';
 	$subir_archivo = $directorio.basename($_FILES['subir_archivo']['name']);
 	move_uploaded_file($_FILES['subir_archivo']['tmp_name'], $subir_archivo);
@@ -31,7 +31,7 @@
     	$nomBien = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();    
 		$detalleDelBien = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
 		$detalleDelBien = str_replace("'", "\'", $detalleDelBien);//cambia (') por (\') para evitar el conflicto de comillas.
-    	$serieDelBien=0;
+		$serieDelBien = $objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
 		$origenDelBien = $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
 			if($origenDelBien==""){
 				$origenDelBien="-";
@@ -74,7 +74,7 @@
 		$detalleDelBien=mayIni($detalleDelBien);					
 		$sql='INSERT INTO bienes (nomBien,detalleDelBien,serieDelBien,origenDelBien,fechaAdquisicion,precio,cantBien,codCategoria,codDependencias,usuarioID,codAlmacenamiento,codEstado,codMantenimiento,observaciones) 
 		VALUES (\''.$nomBien.'\',\''.$detalleDelBien.'\',\''.$serieDelBien.'\',\''.$origenDelBien.'\',\''.$fechaAdquisicion.'\','.$precio.','.$cantBien.','.$codCategoria.','.$codDependencias.','.$usuarioID.','.$codAlmacenamiento.','.$codEstado.','.$codMantenimiento.',\''.$observaciones.'\')';
-		//echo '<br>'.$sql;
+		echo '<br>'.$sql;
 		$conexion->query($sql);	
 	}
 echo "
