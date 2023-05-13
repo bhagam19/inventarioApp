@@ -68,7 +68,7 @@
 							';
 									$sql=mysqli_query($conexion,"SELECT * FROM categoriasDeBienes");
 									while($f=mysqli_fetch_array($sql)){
-										echo'<option value='.$f['codClase'].'>'.$f['nomClase'].'</option>';
+										echo'<option value='.$f['codCategoria'].'>'.$f['nomCategoria'].'</option>';
 									}									    
 								echo'								
 							</select></td>	
